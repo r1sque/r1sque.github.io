@@ -64,6 +64,17 @@
     audio {
       width: 100%;
       margin-top: 20px;
+      display: none; /* Hide the default audio controls */
+    }
+
+    #volumeButton {
+      background-color: #4285f4; /* Google Blue */
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      font-size: 16px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -81,7 +92,8 @@
       </div>
     </div>
 
-    <audio id="radioPlayer" controls></audio>
+    <audio id="radioPlayer" src="https://25303.live.streamtheworld.com/WEB10_MP3_SC"></audio>
+    <button id="volumeButton">Volume</button>
   </div>
 
   <!-- Bootstrap JS and jQuery (required for the Bootstrap JS components) -->
@@ -89,19 +101,20 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-      const radioStations = [
-        { name: "SlamFM", streamUrl: "https://25303.live.streamtheworld.com/WEB10_MP3_SC" },
-        { name: "Radio 538", streamUrl: "URL_TO_STREAM_5" },
-        { name: "Qmusic", streamUrl: "URL_TO_STREAM_6" },
-        { name: "Sky Radio", streamUrl: "URL_TO_STREAM_7" },
-        { name: "3FM", streamUrl: "URL_TO_STREAM_8" },
-        { name: "Radio 10", streamUrl: "URL_TO_STREAM_9" },
-        { name: "NPO Radio 1", streamUrl: "URL_TO_STREAM_10" },
-        // Add more stations as needed
-      ];
+    const radioStations = [
+      { name: "SlamFM", streamUrl: "https://25303.live.streamtheworld.com/WEB10_MP3_SC" },
+      { name: "Radio 538", streamUrl: "URL_TO_STREAM_5" },
+      { name: "Qmusic", streamUrl: "URL_TO_STREAM_6" },
+      { name: "Sky Radio", streamUrl: "URL_TO_STREAM_7" },
+      { name: "3FM", streamUrl: "URL_TO_STREAM_8" },
+      { name: "Radio 10", streamUrl: "URL_TO_STREAM_9" },
+      { name: "NPO Radio 1", streamUrl: "URL_TO_STREAM_10" },
+      // Add more stations as needed
+    ];
 
     const radioList = document.getElementById("radioStations");
     const radioPlayer = document.getElementById("radioPlayer");
+    const volumeButton = document.getElementById("volumeButton");
 
     radioStations.forEach(station => {
       const listItem = document.createElement("a");
@@ -124,6 +137,14 @@
       });
 
       radioList.appendChild(listItem);
+    });
+
+    volumeButton.addEventListener("click", () => {
+      if (radioPlayer.volume === 0) {
+        radioPlayer.volume = 1;
+      } else {
+        radioPlayer.volume = 0;
+      }
     });
   </script>
 
