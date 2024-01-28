@@ -28,23 +28,21 @@
       color: #4285f4; /* Google Blue */
     }
 
-    .radio-container {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      margin: auto;
+    .radio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-gap: 20px;
       margin-top: 20px;
     }
 
     .radio-button {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
+      width: 100%;
+      height: 100px;
+      border-radius: 15px;
       background-color: #4285f4; /* Google Blue */
       color: #fff;
-      font-size: 14px;
-      line-height: 40px;
+      font-size: 16px;
+      line-height: 100px;
       text-align: center;
       cursor: pointer;
     }
@@ -52,15 +50,6 @@
     .radio-button:hover {
       background-color: #3b73af;
     }
-
-    .radio-button:nth-child(1) { transform: rotate(45deg); top: 10px; left: 80px; }
-    .radio-button:nth-child(2) { transform: rotate(90deg); top: 80px; left: 150px; }
-    .radio-button:nth-child(3) { transform: rotate(135deg); top: 150px; left: 80px; }
-    .radio-button:nth-child(4) { transform: rotate(180deg); top: 80px; left: 10px; }
-    .radio-button:nth-child(5) { transform: rotate(225deg); bottom: 10px; left: 80px; }
-    .radio-button:nth-child(6) { transform: rotate(270deg); top: 80px; right: 10px; }
-    .radio-button:nth-child(7) { transform: rotate(315deg); bottom: 80px; left: 150px; }
-    .radio-button:nth-child(8) { transform: rotate(360deg); bottom: 80px; right: 80px; }
 
     audio {
       width: 100%;
@@ -97,15 +86,8 @@
       </div>
     </div>
 
-    <div class="radio-container">
-      <div class="radio-button" onclick="playRadio(1)">1</div>
-      <div class="radio-button" onclick="playRadio(2)">2</div>
-      <div class="radio-button" onclick="playRadio(3)">3</div>
-      <div class="radio-button" onclick="playRadio(4)">4</div>
-      <div class="radio-button" onclick="playRadio(5)">5</div>
-      <div class="radio-button" onclick="playRadio(6)">6</div>
-      <div class="radio-button" onclick="playRadio(7)">7</div>
-      <div class="radio-button" onclick="playRadio(8)">8</div>
+    <div class="radio-grid" id="radioStations">
+      <!-- Radio stations will be appended here dynamically -->
     </div>
 
     <!-- Bootstrap JS and jQuery (required for the Bootstrap JS components) -->
@@ -143,23 +125,13 @@
         const radioStations = await fetchRadioStations();
         const radioList = document.getElementById("radioStations");
 
-        radioStations.forEach(station => {
-          const listItem = document.createElement("a");
-          listItem.href = "#";
-          listItem.classList.add("list-group-item", "list-group-item-action");
-
-          const roundedIcon = document.createElement("div");
-          roundedIcon.classList.add("rounded-icon");
-          roundedIcon.textContent = "R"; // Replace with an icon or station abbreviation
-
-          const stationName = document.createElement("div");
-          stationName.textContent = station.name;
-
-          listItem.appendChild(roundedIcon);
-          listItem.appendChild(stationName);
+        radioStations.forEach((station, index) => {
+          const listItem = document.createElement("div");
+          listItem.classList.add("radio-button");
+          listItem.textContent = station.name;
 
           listItem.addEventListener("click", () => {
-            playRadio(station.number);
+            playRadio(index + 1);
           });
 
           radioList.appendChild(listItem);
