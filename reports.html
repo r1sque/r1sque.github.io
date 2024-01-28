@@ -155,6 +155,9 @@ Evidence/Proof: [Hidden Link](<${providedEvidence}>)
         // Copy the report to clipboard
         copyToClipboard(discordMessage);
 
+        // Clear the form
+        clearForm();
+
         // Save the report to local storage
         saveToLocal({
             user: {
@@ -194,6 +197,15 @@ Evidence/Proof: [Hidden Link](<${providedEvidence}>)
         document.getElementById('errorMessage').innerText = message;
         document.getElementById('errorMessage').style.display = 'block';
         document.getElementById('successMessage').style.display = 'none';
+    }
+
+    function clearForm() {
+        document.getElementById('providedID').value = '';
+        document.getElementById('providedUsername').value = '';
+        document.getElementById('providedReason').value = '';
+        document.getElementById('providedEvidence').value = '';
+        document.getElementById('typePunishment').value = '';
+        document.getElementById('staffDropdown').value = '';
     }
 
     function copyToClipboard(text) {
