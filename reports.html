@@ -17,7 +17,7 @@
             color: #333;
         }
 
-        form {
+        .container {
             max-width: 600px;
             margin: 20px auto;
             padding: 20px;
@@ -71,7 +71,7 @@
 
 <h1>ModeratorHub - Ban Report Form</h1>
 
-<div id="formContainer">
+<div class="container" id="formContainer">
     <form id="banReportForm">
         <h2>User Information:</h2>
         <label for="providedID">User ID:</label>
@@ -82,7 +82,15 @@
 
         <h2>Ban Information:</h2>
         <label for="providedReason">Reason:</label>
-        <textarea id="providedReason" name="providedReason" rows="4" required></textarea>
+        <select id="providedReason" name="providedReason" required>
+            <option value="" disabled selected>Select Reason</option>
+            <option value="Harassment">Harassment - Unwanted, harmful, or offensive behavior.</option>
+            <option value="Spam">Spam - Irrelevant or inappropriate messages.</option>
+            <option value="Toxic Behavior">Toxic Behavior - Disruptive or harmful actions towards others.</option>
+            <option value="NSFW Content">NSFW Content - Not Safe For Work material.</option>
+            <option value="Other">Other - Specify in the report.</option>
+            <!-- Add more reasons as needed -->
+        </select>
 
         <label for="providedEvidence">Evidence/Proof:</label>
         <textarea id="providedEvidence" name="providedEvidence" rows="4" required></textarea>
@@ -131,12 +139,6 @@
         var staffDropdown = document.getElementById('staffDropdown');
         var selectedStaff = staffDropdown.options[staffDropdown.selectedIndex].value;
 
-        // Validate form fields
-        if (!providedID || !providedUsername || !providedReason || !providedEvidence || !typePunishment || !selectedStaff) {
-            showError('Please fill in all fields.');
-            return;
-        }
-
         // Format Discord message with a hidden link
         var discordMessage = `**Ban Report:**
 User: ${providedID} (${providedUsername})
@@ -149,6 +151,9 @@ Evidence/Proof: [Hidden Link](<${providedEvidence}>)
 
         // Log to console (for testing purposes)
         console.log(discordMessage);
+
+        // Copy the report to clipboard
+        copyToClipboard(discordMessage);
 
         // Save the report to local storage
         saveToLocal({
@@ -163,9 +168,6 @@ Evidence/Proof: [Hidden Link](<${providedEvidence}>)
                 moderatorName: selectedStaff
             }
         });
-
-        // Copy to clipboard
-        copyToClipboard(discordMessage);
 
         // Show success message
         showSuccess('Report submitted successfully and copied to clipboard!');
@@ -182,12 +184,6 @@ Evidence/Proof: [Hidden Link](<${providedEvidence}>)
         localStorage.setItem('banReports', JSON.stringify(existingReports));
     }
 
-    function copyToClipboard(text) {
-        navigator.clipboard.writeText(text)
-            .then(() => console.log('Text copied to clipboard'))
-            .catch(err => console.error('Unable to copy text to clipboard', err));
-    }
-
     function showSuccess(message) {
         document.getElementById('successMessage').innerText = message;
         document.getElementById('successMessage').style.display = 'block';
@@ -198,6 +194,14 @@ Evidence/Proof: [Hidden Link](<${providedEvidence}>)
         document.getElementById('errorMessage').innerText = message;
         document.getElementById('errorMessage').style.display = 'block';
         document.getElementById('successMessage').style.display = 'none';
+    }
+
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            console.log('Report copied to clipboard!');
+        }).catch(function(err) {
+            console.error('Unable to copy to clipboard', err);
+        });
     }
 </script>
 
