@@ -113,7 +113,7 @@
         const radioPlayer = document.getElementById("radioPlayer");
         const volumeSlider = document.getElementById("volumeSlider");
 
-        const station = radioStations[stationNumber - 1];
+        const station = radioStations.children[stationNumber - 1].dataset;
 
         radioPlayer.src = station.streamUrl;
         radioPlayer.play();
@@ -129,6 +129,7 @@
           const listItem = document.createElement("div");
           listItem.classList.add("radio-button");
           listItem.textContent = station.name;
+          listItem.dataset.streamUrl = station.streamUrl;
 
           listItem.addEventListener("click", () => {
             playRadio(index + 1);
