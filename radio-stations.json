@@ -1,0 +1,30 @@
+[
+    {
+        "name": "SlamFM",
+        "streamUrl": "https://25303.live.streamtheworld.com/WEB10_MP3_SC"
+    },
+    {
+        "name": "Radio 538",
+        "streamUrl": "URL_TO_STREAM_5"
+    },
+    {
+        "name": "Qmusic",
+        "streamUrl": "URL_TO_STREAM_6"
+    },
+    {
+        "name": "Sky Radio",
+        "streamUrl": "URL_TO_STREAM_7"
+    },
+    {
+        "name": "3FM",
+        "streamUrl": "URL_TO_STREAM_8"
+    },
+    {
+        "name": "Radio 10",
+        "streamUrl": "URL_TO_STREAM_9"
+    },
+    {
+        "name": "NPO Radio 1",
+        "streamUrl": "URL_TO_STREAM_10"
+    }
+]
