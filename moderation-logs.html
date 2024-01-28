@@ -14,43 +14,33 @@
 </div>
 
 <script>
-// Simulated ban reports data (replace this with actual data from the server)
-var banReports = [
-    {
-        user: {
-            id: "123",
-            username: "JohnDoe"
-        },
-        reason: "Inappropriate behavior",
-        evidence: "Screenshot attached",
-        notes: {
-            typePunishment: "Temporary Ban",
-            moderatorName: "Moderator1"
-        }
-    },
-    // Add more ban reports as needed
-];
+// Fetch ban reports from a JSON file (replace 'ban-reports.json' with the actual file path)
+fetch('ban-reports.json')
+    .then(response => response.json())
+    .then(banReports => displayBanReports(banReports))
+    .catch(error => console.error('Error fetching ban reports:', error));
 
-// Display ban reports
-var banReportsList = document.getElementById("banReportsList");
+function displayBanReports(banReports) {
+    var banReportsList = document.getElementById("banReportsList");
 
-banReports.forEach(function(report) {
-    var formattedReport = `
-        <div>
-            <strong>Ban Report:</strong><br>
-            User: ${report.user.id} (${report.user.username})<br>
-            Reason: ${report.reason}<br>
-            Evidence/Proof: ${report.evidence}<br><br>
+    banReports.forEach(function(report) {
+        var formattedReport = `
+            <div>
+                <strong>Ban Report:</strong><br>
+                User: ${report.user.id} (${report.user.username})<br>
+                Reason: ${report.reason}<br>
+                Evidence/Proof: ${report.evidence}<br><br>
 
-            <strong>Moderator Notes:</strong><br>
-            - ${report.notes.typePunishment}<br>
-            - Moderator: ${report.notes.moderatorName}<br><br>
-        </div>
-        <hr>
-    `;
+                <strong>Moderator Notes:</strong><br>
+                - ${report.notes.typePunishment}<br>
+                - Moderator: ${report.notes.moderatorName}<br><br>
+            </div>
+            <hr>
+        `;
 
-    banReportsList.innerHTML += formattedReport;
-});
+        banReportsList.innerHTML += formattedReport;
+    });
+}
 </script>
 
 </body>

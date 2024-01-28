@@ -1,0 +1,14 @@
+[
+    {
+        "user": {
+            "id": "123",
+            "username": "JohnDoe"
+        },
+        "reason": "Inappropriate behavior",
+        "evidence": "Screenshot attached",
+        "notes": {
+            "typePunishment": "Temporary Ban",
+            "moderatorName": "Moderator1"
+        }
+    }
+]

@@ -58,13 +58,41 @@ Evidence/Proof: ${providedEvidence}
     // Log to console (for testing purposes)
     console.log(discordMessage);
 
-    // You can send this message to Discord using a Discord bot or another method
-
-    // You can also add logic here to send the data to the server for logging
-    // Example: Use fetch() to send the data to a server-side script
-
-    // After submitting, redirect to moderation-logs.html
+    // Save the report to moderation-logs.html
     window.location.href = 'moderation-logs.html';
+
+    // Save the report to ban-logs.json
+    saveToJSON({
+        user: {
+            id: providedID,
+            username: providedUsername
+        },
+        reason: providedReason,
+        evidence: providedEvidence,
+        notes: {
+            typePunishment: typePunishment,
+            moderatorName: moderatorName
+        }
+    });
+}
+
+function saveToJSON(report) {
+    fetch('ban-logs.json')
+        .then(response => response.json())
+        .then(banReports => {
+            // Add the new report to the existing ban reports
+            banReports.push(report);
+
+            // Save the updated ban reports to ban-logs.json
+            return fetch('ban-logs.json', {
+                method: 'PUT', // Use PUT to update the file
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(banReports)
+            });
+        })
+        .catch(error => console.error('Error saving ban report to JSON:', error));
 }
 </script>
 
