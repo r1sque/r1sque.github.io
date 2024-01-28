@@ -91,7 +91,7 @@
     <input type="text" id="typePunishment" name="typePunishment" required>
 
     <label for="staffUsername">Your Discord Username:</label>
-    <input type="text" id="staffUsername" name="staffUsername" required>
+    <input type="text" id="staffUsername" name="staffUsername" required readonly>
 
     <br>
     <button type="button" onclick="submitForm()">Submit Report</button>
@@ -100,6 +100,14 @@
 </form>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Populate the Discord username input field
+    var staffUsernameInput = document.getElementById('staffUsername');
+    
+    // Replace 'your_staff_username' with the actual Discord username of the staff member
+    staffUsernameInput.value = 'your_staff_username';
+});
+
 function submitForm() {
     // Get form data
     var providedID = document.getElementById("providedID").value;
