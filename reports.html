@@ -31,7 +31,7 @@
             margin-bottom: 8px;
         }
 
-        input, textarea {
+        input, textarea, select {
             width: 100%;
             padding: 8px;
             margin-bottom: 16px;
@@ -99,8 +99,17 @@
         <label for="typePunishment">Type of Punishment:</label>
         <input type="text" id="typePunishment" name="typePunishment" required>
 
+        <label for="staffDropdown">Select Staff Member:</label>
+        <select id="staffDropdown" name="staffDropdown" required>
+            <option value="" disabled selected>Select Staff Member</option>
+            <!-- Add staff members to the dropdown -->
+            <option value="staff_member1">Staff Member 1</option>
+            <option value="staff_member2">Staff Member 2</option>
+            <!-- Add more staff members as needed -->
+        </select>
+
         <label for="staffUsername">Your Discord Username:</label>
-        <input type="text" id="staffUsername" name="staffUsername" required readonly>
+        <input type="text" id="staffUsername" name="staffUsername" required>
 
         <br>
         <button type="button" onclick="submitForm()">Submit Report</button>
@@ -110,19 +119,14 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Replace 'your_staff_username' with the actual Discord username of the staff member
-            var validStaffUsername = 'your_staff_username';
             var staffUsernameInput = document.getElementById('staffUsername');
             var formContainer = document.getElementById('formContainer');
-
-            // Populate the Discord username input field
-            staffUsernameInput.value = validStaffUsername;
 
             // Check if the entered username is valid
             staffUsernameInput.addEventListener('input', function() {
                 var enteredUsername = staffUsernameInput.value;
 
-                if (enteredUsername === validStaffUsername) {
+                if (enteredUsername) {
                     // Show the form
                     formContainer.classList.add('show-form');
                 } else {
