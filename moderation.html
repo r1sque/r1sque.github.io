@@ -58,10 +58,7 @@ Evidence/Proof: ${providedEvidence}
     // Log to console (for testing purposes)
     console.log(discordMessage);
 
-    // Save the report to moderation-logs.html
-    window.location.href = 'moderation-logs.html';
-
-    // Save the report to ban-logs.json
+    // Save the report to ban-reports.json
     saveToJSON({
         user: {
             id: providedID,
@@ -83,7 +80,7 @@ function saveToJSON(report) {
             // Add the new report to the existing ban reports
             banReports.push(report);
 
-            // Save the updated ban reports to ban-logs.json
+            // Save the updated ban reports to ban-reports.json
             return fetch('ban-reports.json', {
                 method: 'PUT', // Use PUT to update the file
                 headers: {
