@@ -30,8 +30,18 @@
     }
 
     .tablet-list-group {
-      max-height: 300px;
-      overflow-y: auto;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .list-group-item {
+      flex: 1 0 48%; /* Adjust width as needed */
+      margin: 1%;
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s;
     }
 
     .rounded-icon {
@@ -45,14 +55,6 @@
       justify-content: center;
       font-size: 24px;
       margin-right: 15px;
-    }
-
-    .list-group-item {
-      display: flex;
-      align-items: center;
-      padding: 15px;
-      cursor: pointer;
-      transition: background-color 0.3s;
     }
 
     .list-group-item:hover {
@@ -72,7 +74,7 @@
     <h1 class="tablet-header">Dutch Radio Player</h1>
 
     <div class="row justify-content-center">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <div class="list-group tablet-list-group" id="radioStations">
           <!-- Add radio stations dynamically -->
         </div>
@@ -87,13 +89,16 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    const radioStations = [
-      { name: "SlamFM", streamUrl: "https://25303.live.streamtheworld.com/WEB10_MP3_SC" },
-      { name: "Station 2", streamUrl: "URL_TO_STREAM_2" },
-      { name: "Station 3", streamUrl: "URL_TO_STREAM_3" },
-      { name: "Station 4", streamUrl: "URL_TO_STREAM_4" },
-      // Add more stations as needed
-    ];
+      const radioStations = [
+        { name: "SlamFM", streamUrl: "https://25303.live.streamtheworld.com/WEB10_MP3_SC" },
+        { name: "Radio 538", streamUrl: "URL_TO_STREAM_5" },
+        { name: "Qmusic", streamUrl: "URL_TO_STREAM_6" },
+        { name: "Sky Radio", streamUrl: "URL_TO_STREAM_7" },
+        { name: "3FM", streamUrl: "URL_TO_STREAM_8" },
+        { name: "Radio 10", streamUrl: "URL_TO_STREAM_9" },
+        { name: "NPO Radio 1", streamUrl: "URL_TO_STREAM_10" },
+        // Add more stations as needed
+      ];
 
     const radioList = document.getElementById("radioStations");
     const radioPlayer = document.getElementById("radioPlayer");
@@ -102,11 +107,11 @@
       const listItem = document.createElement("a");
       listItem.href = "#";
       listItem.classList.add("list-group-item", "list-group-item-action");
-      
+
       const roundedIcon = document.createElement("div");
       roundedIcon.classList.add("rounded-icon");
       roundedIcon.textContent = "R"; // Replace with an icon or station abbreviation
-      
+
       const stationName = document.createElement("div");
       stationName.textContent = station.name;
 
