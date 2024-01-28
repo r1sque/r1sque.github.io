@@ -77,14 +77,14 @@ Evidence/Proof: ${providedEvidence}
 }
 
 function saveToJSON(report) {
-    fetch('ban-logs.json')
+    fetch('ban-reports.json')
         .then(response => response.json())
         .then(banReports => {
             // Add the new report to the existing ban reports
             banReports.push(report);
 
             // Save the updated ban reports to ban-logs.json
-            return fetch('ban-logs.json', {
+            return fetch('ban-reports.json', {
                 method: 'PUT', // Use PUT to update the file
                 headers: {
                     'Content-Type': 'application/json'
