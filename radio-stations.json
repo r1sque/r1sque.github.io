@@ -1,30 +1,37 @@
 [
     {
         "name": "SlamFM",
-        "streamUrl": "https://25303.live.streamtheworld.com/WEB10_MP3_SC"
+        "streamUrl": "https://25303.live.streamtheworld.com/WEB10_MP3_SC",
+        "channel_icon": "https://example.com/slamfm_icon.png"
     },
     {
         "name": "Radio 538",
-        "streamUrl": "URL_TO_STREAM_5"
+        "streamUrl": "URL_TO_STREAM_5",
+        "channel_icon": "https://example.com/radio538_icon.png"
     },
     {
         "name": "Qmusic",
-        "streamUrl": "URL_TO_STREAM_6"
+        "streamUrl": "URL_TO_STREAM_6",
+        "channel_icon": "https://example.com/qmusic_icon.png"
     },
     {
         "name": "Sky Radio",
-        "streamUrl": "URL_TO_STREAM_7"
+        "streamUrl": "URL_TO_STREAM_7",
+        "channel_icon": "https://example.com/skyradio_icon.png"
     },
     {
         "name": "3FM",
-        "streamUrl": "URL_TO_STREAM_8"
+        "streamUrl": "URL_TO_STREAM_8",
+        "channel_icon": "https://example.com/3fm_icon.png"
     },
     {
         "name": "Radio 10",
-        "streamUrl": "URL_TO_STREAM_9"
+        "streamUrl": "URL_TO_STREAM_9",
+        "channel_icon": "https://example.com/radio10_icon.png"
     },
     {
         "name": "NPO Radio 1",
-        "streamUrl": "URL_TO_STREAM_10"
+        "streamUrl": "URL_TO_STREAM_10",
+        "channel_icon": "https://example.com/npotadio1_icon.png"
     }
 ]

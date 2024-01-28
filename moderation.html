@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModeratorHub - Ban Report Form</title>
+</head>
+<body>
+
+<h1>Ban Report Form</h1>
+
+<form id="banReportForm">
+    <h2>User Information:</h2>
+    <label for="providedID">User ID:</label>
+    <input type="text" id="providedID" name="providedID" required>
+
+    <label for="providedUsername">Username:</label>
+    <input type="text" id="providedUsername" name="providedUsername" required>
+
+    <h2>Ban Information:</h2>
+    <label for="providedReason">Reason:</label>
+    <textarea id="providedReason" name="providedReason" rows="4" required></textarea>
+
+    <label for="providedEvidence">Evidence/Proof:</label>
+    <textarea id="providedEvidence" name="providedEvidence" rows="4" required></textarea>
+
+    <h2>Moderator Notes:</h2>
+    <label for="typePunishment">Type of Punishment:</label>
+    <input type="text" id="typePunishment" name="typePunishment" required>
+
+    <label for="moderatorName">Moderator Name:</label>
+    <input type="text" id="moderatorName" name="moderatorName" required>
+
+    <br>
+    <button type="button" onclick="submitForm()">Submit Report</button>
+</form>
+
+<script>
+function submitForm() {
+    // Get form data
+    var providedID = document.getElementById("providedID").value;
+    var providedUsername = document.getElementById("providedUsername").value;
+    var providedReason = document.getElementById("providedReason").value;
+    var providedEvidence = document.getElementById("providedEvidence").value;
+    var typePunishment = document.getElementById("typePunishment").value;
+    var moderatorName = document.getElementById("moderatorName").value;
+
+    // Format Discord message
+    var discordMessage = `**Ban Report:**
+User: ${providedID} (${providedUsername})
+Reason: ${providedReason}
+Evidence/Proof: ${providedEvidence}
+
+**Moderator Notes:**
+- ${typePunishment}
+- Moderator: ${moderatorName}`;
+
+    // Log to console (for testing purposes)
+    console.log(discordMessage);
+
+    // You can send this message to Discord using a Discord bot or another method
+
+    // You can also add logic here to send the data to the server for logging
+    // Example: Use fetch() to send the data to a server-side script
+
+    // After submitting, redirect to moderation-logs.html
+    window.location.href = 'moderation-logs.html';
+}
+</script>
+
+</body>
+</html>

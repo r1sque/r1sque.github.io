@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModeratorHub - Ban Reports Log</title>
+</head>
+<body>
+
+<h1>Ban Reports Log</h1>
+
+<div id="banReportsList">
+    <!-- Ban reports will be displayed here -->
+</div>
+
+<script>
+// Simulated ban reports data (replace this with actual data from the server)
+var banReports = [
+    {
+        user: {
+            id: "123",
+            username: "JohnDoe"
+        },
+        reason: "Inappropriate behavior",
+        evidence: "Screenshot attached",
+        notes: {
+            typePunishment: "Temporary Ban",
+            moderatorName: "Moderator1"
+        }
+    },
+    // Add more ban reports as needed
+];
+
+// Display ban reports
+var banReportsList = document.getElementById("banReportsList");
+
+banReports.forEach(function(report) {
+    var formattedReport = `
+        <div>
+            <strong>Ban Report:</strong><br>
+            User: ${report.user.id} (${report.user.username})<br>
+            Reason: ${report.reason}<br>
+            Evidence/Proof: ${report.evidence}<br><br>
+
+            <strong>Moderator Notes:</strong><br>
+            - ${report.notes.typePunishment}<br>
+            - Moderator: ${report.notes.moderatorName}<br><br>
+        </div>
+        <hr>
+    `;
+
+    banReportsList.innerHTML += formattedReport;
+});
+</script>
+
+</body>
+</html>
