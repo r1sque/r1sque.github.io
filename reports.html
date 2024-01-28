@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModeratorHub - Ban Report Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .success-message {
+            color: #4caf50;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .error-message {
+            color: #ff3333;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Ban Report Form</h1>
+
+<form id="banReportForm">
+    <h2>User Information:</h2>
+    <label for="providedID">User ID:</label>
+    <input type="text" id="providedID" name="providedID" required>
+
+    <label for="providedUsername">Username:</label>
+    <input type="text" id="providedUsername" name="providedUsername" required>
+
+    <h2>Ban Information:</h2>
+    <label for="providedReason">Reason:</label>
+    <textarea id="providedReason" name="providedReason" rows="4" required></textarea>
+
+    <label for="providedEvidence">Evidence/Proof:</label>
+    <textarea id="providedEvidence" name="providedEvidence" rows="4" required></textarea>
+
+    <h2>Moderator Notes:</h2>
+    <label for="typePunishment">Type of Punishment:</label>
+    <input type="text" id="typePunishment" name="typePunishment" required>
+
+    <label for="staffUsername">Your Discord Username:</label>
+    <input type="text" id="staffUsername" name="staffUsername" required>
+
+    <br>
+    <button type="button" onclick="submitForm()">Submit Report</button>
+    <div id="successMessage" class="success-message" style="display: none;">Report submitted successfully!</div>
+    <div id="errorMessage" class="error-message" style="display: none;"></div>
+</form>
+
+<script>
+function submitForm() {
+    // Get form data
+    var providedID = document.getElementById("providedID").value;
+    var providedUsername = document.getElementById("providedUsername").value;
+    var providedReason = document.getElementById("providedReason").value;
+    var providedEvidence = document.getElementById("providedEvidence").value;
+    var typePunishment = document.getElementById("typePunishment").value;
+    var staffUsername = document.getElementById("staffUsername").value;
+
+    // Validate staff member's Discord username (replace with your validation logic)
+    if (staffUsername !== "valid_staff_username") {
+        showError("Invalid staff member. Please provide a valid Discord username.");
+        return;
+    }
+
+    // Format Discord message
+    var discordMessage = `**Ban Report:**
+User: ${providedID} (${providedUsername})
+Reason: ${providedReason}
+Evidence/Proof: ${providedEvidence}
+
+**Moderator Notes:**
+- ${typePunishment}
+- Moderator: ${staffUsername}`;
+
+    // Log to console (for testing purposes)
+    console.log(discordMessage);
+
+    // Save the report to local storage
+    saveToLocal({
+        user: {
+            id: providedID,
+            username: providedUsername
+        },
+        reason: providedReason,
+        evidence: providedEvidence,
+        notes: {
+            typePunishment: typePunishment,
+            moderatorName: staffUsername
+        }
+    });
+
+    // Show success message
+    showSuccess("Report submitted successfully!");
+}
+
+function saveToLocal(report) {
+    // Get existing reports from local storage or initialize an empty array
+    var existingReports = JSON.parse(localStorage.getItem('banReports')) || [];
+
+    // Add the new report to the existing reports
+    existingReports.push(report);
+
+    // Save the updated reports to local storage
+    localStorage.setItem('banReports', JSON.stringify(existingReports));
+}
+
+function showSuccess(message) {
+    document.getElementById("successMessage").innerText = message;
+    document.getElementById("successMessage").style.display = "block";
+    document.getElementById("errorMessage").style.display = "none";
+}
+
+function showError(message) {
+    document.getElementById("errorMessage").innerText = message;
+    document.getElementById("errorMessage").style.display = "block";
+    document.getElementById("successMessage").style.display = "none";
+}
+</script>
+
+</body>
+</html>
