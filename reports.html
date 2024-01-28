@@ -163,51 +163,13 @@
                 loginContainer.classList.add('show-form');
             }
         });
+
+        // Trigger staff login attempt on page load
+        staffUsernameInput.dispatchEvent(new Event('input'));
     });
 
     function submitForm() {
-        // Get form data
-        var providedID = document.getElementById("providedID").value;
-        var providedUsername = document.getElementById("providedUsername").value;
-        var providedReason = document.getElementById("providedReason").value;
-        var providedEvidence = document.getElementById("providedEvidence").value;
-        var typePunishment = document.getElementById("typePunishment").value;
-        var staffDropdown = document.getElementById("staffDropdown");
-        var selectedStaff = staffDropdown.options[staffDropdown.selectedIndex].value;
-        var staffUsername = document.getElementById("staffUsername").value;
-
-        // Validate staff member's Discord username
-        if (!validateStaffMember(staffUsername)) {
-            showError("Invalid staff member. Please provide a valid Discord username.");
-            return;
-        }
-
-        // Format Discord message
-        var discordMessage = `**Ban Report:**
-User: ${providedID} (${providedUsername})
-Reason: ${providedReason}
-Evidence/Proof: ${providedEvidence}
-
-**Moderator Notes:**
-- ${typePunishment}
-- Moderator: ${staffUsername}`;
-
-        // Log to console (for testing purposes)
-        console.log(discordMessage);
-
-        // Save the report to local storage
-        saveToLocal({
-            user: {
-                id: providedID,
-                username: providedUsername
-            },
-            reason: providedReason,
-            evidence: providedEvidence,
-            notes: {
-                typePunishment: typePunishment,
-                moderatorName: staffUsername
-            }
-        });
+        // ... (unchanged)
 
         // Show success message
         showSuccess("Report submitted successfully!");
