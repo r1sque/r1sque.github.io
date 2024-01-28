@@ -178,8 +178,8 @@
     function login() {
         var staffUsername = document.getElementById('staffUsername').value;
 
-        // Validate staff member's Discord username
-        if (validateStaffMember(staffUsername)) {
+        // Validate staff member's Discord username (case-insensitive)
+        if (validateStaffMember(staffUsername.toLowerCase())) {
             // Show the form
             document.getElementById('formContainer').classList.add('show-form');
             document.getElementById('loginContainer').classList.remove('show-form');
