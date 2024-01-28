@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<!-- saved from url=(0036)https://thrasilias.github.io/reports -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ModeratorHub - Ban Report Form</title>
     <style>
@@ -18,12 +18,22 @@
         }
 
         .container {
-            max-width: 600px;
+            display: grid;
+            column-gap: 20px;
+            grid-template-columns: 1fr 1fr;
             margin: 20px auto;
+            max-width: 80%;
+        }
+
+        .column {
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #discordMessage {
+            height: 500px;
         }
 
         label {
@@ -39,6 +49,14 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             resize: vertical;
+        }
+
+        #providedEvidence{
+            height: 100px;
+            resize: none;
+        }
+        #discordMessage{
+            resize: none;
         }
 
         button {
@@ -71,61 +89,70 @@
 
 <h1>ModeratorHub - Ban Report Form</h1>
 
-<div class="container" id="formContainer">
-    <form id="banReportForm">
-        <h2>User Information:</h2>
-        <label for="providedID">User ID:</label>
-        <input type="text" id="providedID" name="providedID" required>
+<div class="container">
+    <section class="column">
+        <form id="banReportForm" onchange="onFormChange()">
+            <h2>User Information:</h2>
+            <label for="providedID">User ID:</label>
+            <input type="text" id="providedID" name="providedID" required="">
 
-        <label for="providedUsername">Username:</label>
-        <input type="text" id="providedUsername" name="providedUsername" required>
+            <label for="providedUsername">Username:</label>
+            <input type="text" id="providedUsername" name="providedUsername" required="">
 
-        <h2>Ban Information:</h2>
-        <label for="providedReason">Reason:</label>
-        <select id="providedReason" name="providedReason" required>
-            <option value="" disabled selected>Select Reason</option>
-            <option value="Harassment">Harassment - Unwanted, harmful, or offensive behavior.</option>
-            <option value="Spam">Spam - Irrelevant or inappropriate messages.</option>
-            <option value="Toxic Behavior">Toxic Behavior - Disruptive or harmful actions towards others.</option>
-            <option value="NSFW Content">NSFW Content - Not Safe For Work material.</option>
-            <option value="Other">Other - Specify in the report.</option>
-            <!-- Add more reasons as needed -->
-        </select>
+            <h2>Ban Information:</h2>
+            <label for="providedReason">Reason:</label>
+            <select id="providedReason" name="providedReason" required="">
+                <option value="" disabled="" selected="">Select Reason</option>
+                <option value="Harassment">Harassment - Unwanted, harmful, or offensive behavior.</option>
+                <option value="Spam">Spam - Irrelevant or inappropriate messages.</option>
+                <option value="Toxic Behavior">Toxic Behavior - Disruptive or harmful actions towards others.</option>
+                <option value="NSFW Content">NSFW Content - Not Safe For Work material.</option>
+                <option value="Other">Other - Specify in the report.</option>
+                <!-- Add more reasons as needed -->
+            </select>
 
-        <label for="providedEvidence">Evidence/Proof:</label>
-        <textarea id="providedEvidence" name="providedEvidence" rows="4" required></textarea>
+            <label for="providedEvidence">Evidence/Proof:</label>
+            <textarea id="providedEvidence" name="providedEvidence" rows="4" required></textarea>
 
-        <h2>Moderator Notes:</h2>
-        <label for="typePunishment">Type of Punishment:</label>
-        <select id="typePunishment" name="typePunishment" required>
-            <option value="" disabled selected>Select Punishment Type</option>
-            <option value="Warning">Warning</option>
-            <option value="Mute">Mute</option>
-            <option value="Kick">Kick</option>
-            <option value="Temporary Ban">Temporary Ban</option>
-            <option value="Permanent Ban">Permanent Ban</option>
-            <!-- Add more punishment types as needed -->
-        </select>
+            <h2>Moderator Notes:</h2>
+            <label for="typePunishment">Type of Punishment:</label>
+            <select id="typePunishment" name="typePunishment" required="">
+                <option value="" disabled="" selected="">Select Punishment Type</option>
+                <option value="Warning">Warning</option>
+                <option value="Mute">Mute</option>
+                <option value="Kick">Kick</option>
+                <option value="Temporary Ban">Temporary Ban</option>
+                <option value="Permanent Ban">Permanent Ban</option>
+                <!-- Add more punishment types as needed -->
+            </select>
+            
 
-        <label for="staffDropdown">Select Staff Member:</label>
-        <select id="staffDropdown" name="staffDropdown" required>
-            <option value="" disabled selected>Select Staff Member</option>
-            <option value="1.3._.3.7">1.3._.3.7</option>
-            <option value="blam420">blam420</option>
-            <option value="dragzx">dragzx</option>
-            <option value="lquifi">lquifi</option>
-            <option value="lumardroid">lumardroid</option>
-            <option value="moisty999">moisty999</option>
-            <option value="ressubd">ressubd</option>
-            <option value="thrasilias">thrasilias</option>
-            <!-- Add more staff members as needed -->
-        </select>
+            <label for="staffDropdown">Select Staff Member:</label>
+            <select id="staffDropdown" name="staffDropdown" required="">
+                <option value="" disabled="" selected="">Select Staff Member</option>
+                <option value="1.3._.3.7">1.3._.3.7</option>
+                <option value="blam420">blam420</option>
+                <option value="dragzx">dragzx</option>
+                <option value="lquifi">lquifi</option>
+                <option value="lumardroid">lumardroid</option>
+                <option value="moisty999">moisty999</option>
+                <option value="ressubd">ressubd</option>
+                <option value="thrasilias">thrasilias</option>
+                <!-- Add more staff members as needed -->
+            </select>
 
-        <br>
-        <button type="button" onclick="submitForm()">Submit Report</button>
-        <div id="successMessage" class="success-message" style="display: none;">Report submitted successfully and copied to clipboard!</div>
-        <div id="errorMessage" class="error-message" style="display: none;"></div>
-    </form>
+            <br>
+            <button type="button" onclick="submitForm()">Submit Report</button>
+            <div id="successMessage" class="success-message" style="display: none;">Report submitted successfully and copied to clipboard!</div>
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+        </form>
+    </section>
+
+    <section class="column">
+        <h2>Output:</h2>
+        <textarea id="discordMessage" readonly></textarea>
+        <button onclick="console.log(this)">Copy Report</button>
+    </section>
 </div>
 
 <script>
@@ -176,9 +203,31 @@ Evidence/Proof: [Hidden Link](<${providedEvidence}>)
         showSuccess('Report submitted successfully and copied to clipboard!');
     }
 
+    function onFormChange() {
+      var providedID = document.getElementById('providedID').value;
+      var providedUsername = document.getElementById('providedUsername').value;
+      var providedReason = document.getElementById('providedReason').value;
+      var providedEvidence = document.getElementById('providedEvidence').value;
+      var typePunishment = document.getElementById('typePunishment').value;
+      var staffDropdown = document.getElementById('staffDropdown');
+      var selectedStaff = staffDropdown.options[staffDropdown.selectedIndex].value;
+
+      // Format Discord message with a hidden link
+      document.getElementById('discordMessage').value = `**Ban Report:**
+User: ${providedID} (${providedUsername})
+Reason: ${providedReason}
+Evidence/Proof: [Hidden Link](<${providedEvidence}>)
+
+**Moderator Notes:**
+- Type of Punishment: ${typePunishment}
+- Moderator: ${selectedStaff}`;
+    }
+
     function saveToLocal(report) {
         // Get existing reports from local storage or initialize an empty array
         var existingReports = JSON.parse(localStorage.getItem('banReports')) || [];
+
+
 
         // Add the new report to the existing reports
         existingReports.push(report);
@@ -217,5 +266,6 @@ Evidence/Proof: [Hidden Link](<${providedEvidence}>)
     }
 </script>
 
-</body>
-</html>
+
+
+</body></html>
