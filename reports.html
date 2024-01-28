@@ -115,7 +115,7 @@
 
         <br>
         <button type="button" onclick="submitForm()">Submit Report</button>
-        <div id="successMessage" class="success-message" style="display: none;">Report submitted successfully!</div>
+        <div id="successMessage" class="success-message" style="display: none;">Report submitted successfully and copied to clipboard!</div>
         <div id="errorMessage" class="error-message" style="display: none;"></div>
     </form>
 </div>
@@ -130,6 +130,12 @@
         var typePunishment = document.getElementById('typePunishment').value;
         var staffDropdown = document.getElementById('staffDropdown');
         var selectedStaff = staffDropdown.options[staffDropdown.selectedIndex].value;
+
+        // Validate form fields
+        if (!providedID || !providedUsername || !providedReason || !providedEvidence || !typePunishment || !selectedStaff) {
+            showError('Please fill in all fields.');
+            return;
+        }
 
         // Format Discord message with a hidden link
         var discordMessage = `**Ban Report:**
@@ -158,8 +164,11 @@ Evidence/Proof: [Hidden Link](<${providedEvidence}>)
             }
         });
 
+        // Copy to clipboard
+        copyToClipboard(discordMessage);
+
         // Show success message
-        showSuccess('Report submitted successfully!');
+        showSuccess('Report submitted successfully and copied to clipboard!');
     }
 
     function saveToLocal(report) {
@@ -171,6 +180,12 @@ Evidence/Proof: [Hidden Link](<${providedEvidence}>)
 
         // Save the updated reports to local storage
         localStorage.setItem('banReports', JSON.stringify(existingReports));
+    }
+
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text)
+            .then(() => console.log('Text copied to clipboard'))
+            .catch(err => console.error('Unable to copy text to clipboard', err));
     }
 
     function showSuccess(message) {
