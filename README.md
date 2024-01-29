@@ -1,10 +1,7 @@
-# r1sque GitHub Page : https://r1sque.github.io/reports
-
+# r1sque GitHub Page : https://r1sque.github.io
 To be added:
 
   → Add a Darkmode button / Fullbright button
-  
-  → Animated background 
 
 ## Technologies Used
 - HTML
