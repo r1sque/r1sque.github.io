@@ -7,8 +7,6 @@
        
         <style>
 
-
-
             @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
             * {
                 box-sizing: border-box;
@@ -60,7 +58,7 @@
                 overflow: hidden;
                 display: flex;
                 justify-content: center;
-                align-items: flex-start; /* Align items to the top */
+                align-items: flex-start; 
                 padding-top: 20px; /* Add some top padding */
             }
             .wrapper.form-success .container h1 {
@@ -81,6 +79,7 @@
                 font-weight: 200;
                 text-shadow: 0 0 1em #8a2be2, 0 0 0.2em #8a2be2;
                 font-weight: bold;
+                margin-left: auto;
             }
             form {
                 padding: 20px 0;
@@ -232,29 +231,75 @@
             .rounded-box {
                 background-color: rgba(255, 255, 255, 0.1);
                 border-radius: 10px;
-                padding: 20px; /* Maintain top and bottom padding */
-                margin-top: 20px;
-                width: 90%; /* Adjust the width for almost the entire page */
-                margin-left: -80%; /* Center the box horizontally */
-                padding-left: 10%; /* Add left padding */
-                padding-right: 10%; /* Add right padding */
-                position: relative; /* Set position to relative for centering */
+                padding: 20px;
+                margin-top: 8vh;
+                width: 306%;
+                margin-left: -103%;
+                padding-left: 10%;
+                padding-right: 10%;
+                position: relative;
                 box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-                transition: transform 1s ease; /* Add transition property */
+                transition: transform 1s ease;
+                display: flex; /* Use flexbox to arrange child elements */
+                flex-wrap: wrap; /* Allow wrapping to the next line */
             }
+
+            .rounded-box2 {
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 10px;
+                padding: 20px;
+                width: 90%;
+                margin-top: 10px;
+                margin-left: 79px;
+                padding-left: 10%;
+                padding-right: 10%;
+                box-sizing: border-box;
+                position: relative;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+                transition: transform 1s ease;
+            }
+
             .rounded-box h2 {
-                font-size: 24px; /* Adjust font size as needed */
+                font-size: 24px;
                 font-weight: bold;
                 color: #ffffff;
-                margin-bottom: 20px; /* Add bottom margin */
+                margin-bottom: 20px;
+                
             }
-            /* Add some style for the text inside the rounded box */
+
             .rounded-box p {
                 font-size: 16px;
                 color: #ffffff;
                 font-weight: 500;
             }
 
+            .small-rounded-box {
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 10px;
+                padding: 20px;
+                width: 18%;
+                margin-top: 30px;
+                margin-right: -20px;
+                margin-left: 105px; /* Set to 0 initially */
+                position: relative;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+                transition: transform 1s ease;
+                justify-content: center;
+            }
+
+            /* Add media query to adjust spacing for smaller screens */
+            @media (max-width: 768px) {
+                .small-rounded-box {
+                    margin-right: 20px;
+                }
+            }
+
+            .small-rounded-box h3 {
+                font-size: 18px;
+                font-weight: bold;
+                color: #ffffff;
+                margin-bottom: 10px;
+            }
 
         </style>
 
@@ -264,23 +309,76 @@
         <div class="wrapper">
             <div class="container">
                 <h1>Welcome To My Personal Space</h1>
-                
-                <!-- iputs and button
-                <form class="form">
-                    <input type="text" placeholder="Username">
-                    <input type="password" placeholder="Password">
-                    <button type="submit" id="login-button">Login</button>
-                </form>-->
+
+                    <!-- iputs and button
+                        <form class="form">
+                            <input type="text" placeholder="Username">
+                            <input type="password" placeholder="Password">
+                            <button type="submit" id="login-button">Login</button>
+                        </form>
+                    -->
 
                 <div class="rounded-box">
-                    <h2>Introduction</h2>
-                    <p>Hello and yes</p>
+                    <div class="rounded-box2">
+                        <h2>Introduction</h2>
+                        <p>ora boas pessoal daqui quem fala é o bossmediano e o itzrodripvp tamos aqui num vídeo de minecraft skywars e sim pessoal e pirata , hoje vamos usar o kit stomper do hg mas no skywars para vocês fazerem isto tem q dar download do link do Skype ne  e vai tar lá o mod do kit stopmer. 
+                        Mod super suave muito de andar na nave ta ligado?  dps de dar download do link do Skype vocês têm q dar sub no canal do gongas1221 ai quando dando sub vai tar la o modj dps disso vão no goncalojoaquimlimagongas@blog.pt  blog q vai tar na descrição
+                        ,ne amigos e dps e só abrir a pasta ponto minecraft e ta ai galera fácil de mais dps de fzr isso só basta ligar a panela por o gás no máximo e depois opel corsa valeu
+                        ora boas pessoal daqui quem fala é o bossmediano e o itzrodripvp tamos aqui num vídeo de minecraft skywars e sim pessoal e pirata , hoje vamos usar o kit stomper do hg mas no skywars para vocês fazerem isto tem q dar download do link do Skype ne  e vai tar lá o mod do kit stopmer. 
+                        Mod super suave muito de andar na nave ta ligado?  dps de dar download do link do Skype vocês têm q dar sub no canal do gongas1221 ai quando dando sub vai tar la o modj dps disso vão no goncalojoaquimlimagongas@blog.pt  blog q vai tar na descrição
+                        ,ne amigos e dps e só abrir a pasta ponto minecraft e ta ai galera fácil de mais dps de fzr isso só basta ligar a panela por o gás no máximo e depois opel corsa valeu
+                        ora boas pessoal daqui quem fala é o bossmediano e o itzrodripvp tamos aqui num vídeo de minecraft skywars e sim pessoal e pirata , hoje vamos usar o kit stomper do hg mas no skywars para vocês fazerem isto tem q dar download do link do Skype ne  e vai tar lá o mod do kit stopmer. 
+                        Mod super suave muito de andar na nave ta ligado?  dps de dar download do link do Skype vocês têm q dar sub no canal do gongas1221 ai quando dando sub vai tar la o modj dps disso vão no goncalojoaquimlimagongas@blog.pt  blog q vai tar na descrição
+                        ,ne amigos e dps e só abrir a pasta ponto minecraft e ta ai galera fácil de mais dps de fzr isso só basta ligar a panela por o gás no máximo e depois opel corsa valeu
+                    </p>
+                    </div>
 
-                    <form class="form">
-                        <button onclick="animateAndRedirect()" onclick="redirectToPage()" type="button" id="login-button">Moderation-Hub</button>
-                    </form>
+                    <!-- Add four small-rounded-boxes with their respective content -->
+                    <div class="small-rounded-box">
+                        <h3>ModeratorHub - Ban Report Form</h3>
+                        
+                        <p>A tool used to make quick forms for a qucker and cleaner way for manual ban log.</p>
+
+                        <!-- Add link or content here -->
+                        <form class="form">
+                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://r1sque.github.io/reports')" type="button" id="login-button">Moderation-Hub</button>
+                        </form>
+                    </div>
+
+                    <div class="small-rounded-box">
+                        <h3>Xdev Outfit-Editor</h3>
+                        <!-- Add link or content here -->
+
+                        <p>A GTA 5 tool that allows you to customize and make modded outfits.</p>
+                        <br>
+                        <form class="form">
+                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://google.com')" type="button" id="login-button">Xdev Ooutfit Editor</button>
+                        </form>
+                    </div>
+
+                    <div class="small-rounded-box">
+                        <h3>Mini-Garage</h3>
+                        <!-- Add link or content here -->
+
+                        <p>A GTA 5 tool that allows you to customize and make modded cars.</p>
+                        <br>
+                        <form class="form">
+                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://youtube.com')" type="button" id="login-button">Mini-Garage</button>
+                        </form>
+                    </div>
+
+                    <div class="small-rounded-box">
+                        <h3>Link 4</h3>
+                        <!-- Add link or content here -->
+                        <form class="form">
+                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://www.youtube.com/@ressubd')" type="button" id="login-button">Moderation-Hub</button>
+                        </form>
+                    </div>
+
                 </div>
 
+
+                
                 
             </div>
             
@@ -301,10 +399,7 @@
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script>
     
-            function redirectToPage() {
-                    // Specify the URL of the page you want to redirect to
-                    var targetPageUrl = "https://r1sque.github.io/reports";
-    
+            function redirectToPage(targetPageUrl) {
                     // Use the window.location.href to redirect to the specified URL
                     window.location.href = targetPageUrl;
             }
