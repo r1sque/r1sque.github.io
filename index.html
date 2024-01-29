@@ -68,9 +68,11 @@
             }
             .container {
                 max-width: 600px;
-                padding: 0 20px; /* Adjust padding */
+                padding: 0 20px;
+                /* Adjust padding */
                 text-align: center;
                 width: 100%;
+                transition: opacity 1s ease; /* Add transition property */
             }
             .container h1 {
                 font-size: 40px;
@@ -84,6 +86,7 @@
                 padding: 20px 0;
                 position: relative;
                 z-index: 2;
+                transition: opacity 1s ease; /* Add transition property */
             }
             form input {
                 display: block;
@@ -237,6 +240,7 @@
                 padding-right: 10%; /* Add right padding */
                 position: relative; /* Set position to relative for centering */
                 box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+                transition: transform 1s ease; /* Add transition property */
             }
             .rounded-box h2 {
                 font-size: 24px; /* Adjust font size as needed */
@@ -270,7 +274,11 @@
 
                 <div class="rounded-box">
                     <h2>Introduction</h2>
-                    <p>Hello and </p>
+                    <p>Hello and yes</p>
+
+                    <form class="form">
+                        <button onclick="animateAndRedirect()" onclick="redirectToPage()" type="button" id="login-button">Moderation-Hub</button>
+                    </form>
                 </div>
 
                 
@@ -292,29 +300,34 @@
     
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script>
-            /* for the button animation
-            $(document).ready(function() {
-                $("#login-button").click(function(event) {
-                    event.preventDefault();
-                    $('form').fadeOut(500, function() {
-                        $('.wrapper').addClass('form-success');
-                        setTimeout(function() {
-                            redirectToPage();
-                        }, 2000); // Wait for 2 seconds before redirecting
-                    });
-                });
     
-                function redirectToPage() {
+            function redirectToPage() {
                     // Specify the URL of the page you want to redirect to
                     var targetPageUrl = "https://r1sque.github.io/reports";
     
                     // Use the window.location.href to redirect to the specified URL
                     window.location.href = targetPageUrl;
-                }
-            });*/
+            }
+            function animateAndRedirect() {
+                var button = document.querySelector('.rounded-box form button');
+                var container = document.querySelector('.container');
+                var roundedBox = document.querySelector('.rounded-box');
 
+                // Play the button press animation
+                button.style.animation = 'buttonPress 1.5s ease-in-out';
 
+                // Change the button text to
+                button.textContent = 'Preparing Transition...';
 
+                // Change the container and rounded-box opacity
+                container.style.opacity = 0;
+                roundedBox.style.transform = 'translateY(-50%)';
+
+                // After 1.5 seconds, redirect to the specified page
+                setTimeout(function () {
+                    redirectToPage();
+                }, 1500);
+            }
         </script>
     </body>
 
