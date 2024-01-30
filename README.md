@@ -3,9 +3,12 @@ To be added:
 
   → Add a Darkmode button / Fullbright button
 
-  → fix link issues
+  → fix Onload page animation in CSS smoothness 
 
-  → fix the lightning of the h2
+  → add better animation
+
+  → add the other pages
+
 ## Technologies Used
 - HTML
 - CSS
