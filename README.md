@@ -5,9 +5,7 @@ To be added:
 
   → fix link issues
 
-  → fix the margin for the little box 
-
-  → fix the margin on the big box for more space inside but tighter outside yk
+  → fix the lightning of the h2
 ## Technologies Used
 - HTML
 - CSS
