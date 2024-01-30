@@ -19,7 +19,7 @@
                 color: white;
                 font-weight: 300;
                 height: 100%;
-                margin: 0; /* Remove default margin */
+                margin: 0; /* Remove default margin */ 
             }
 
             body ::-webkit-input-placeholder {
@@ -77,12 +77,15 @@
                 transition-duration: 1s;
                 transition-timing-function: ease-in-put;
                 font-weight: 200;
-                text-shadow: 0 0 1em #8a2be2, 0 0 0.2em #8a2be2;
+                text-shadow: 0 0 1em #ffffff, 0 0 0.2em #8a2be2;
                 font-weight: bold;
                 margin-left: auto;
+                opacity: 0; /* Set initial opacity to 0 */
+                animation: fadeIn 2.5s ease-in-out forwards; /* Animation properties */
             }
             form {
-                padding: 20px 0;
+                padding-top: 20px;
+                padding-bottom: 10px;
                 position: relative;
                 z-index: 2;
                 transition: opacity 1s ease; /* Add transition property */
@@ -125,7 +128,7 @@
                 transition-duration: 0.25s;
             }
             form button:hover {
-                background-color: #f5f7f9;
+                background-color: #e3c5ff;
             }
             .bg-bubbles {
                 position: absolute;
@@ -134,6 +137,7 @@
                 width: 100%;
                 height: 100%;
                 z-index: 1;
+                pointer-events: none;
             }
             .bg-bubbles li {
                 position: absolute;
@@ -232,7 +236,7 @@
                 background-color: rgba(255, 255, 255, 0.1);
                 border-radius: 10px;
                 padding: 20px;
-                margin-top: 8vh;
+                margin-top: 4vh;
                 width: 306%;
                 margin-left: -103%;
                 padding-left: 10%;
@@ -242,14 +246,54 @@
                 transition: transform 1s ease;
                 display: flex; /* Use flexbox to arrange child elements */
                 flex-wrap: wrap; /* Allow wrapping to the next line */
+                animation: 1.5s ease-out 0s 1 slideInUp;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0; /* Starting opacity */
+                }
+                to {
+                    opacity: 1; /* Ending opacity */
+                }
+            }
+            @keyframes slideInUp {
+                0% {
+                transform: translateY(-80%);
+                }
+                100% {
+                transform: translateY(0);
+                }
+            }
+
+            .rounded-box h2 {
+                text-shadow: 0 0 1em #ffffff, 0 0 0.1em #8a2be2;
+                font-size: 24px;
+                font-weight: bold;
+                color: #ffffff;
+                margin-bottom: 20px;
+                text-align: center;
+                text-decoration: underline;
+                text-underline-position: under;
+            }
+            
+            .rounded-box p {
+                font-size: 16px;
+                color: #ffffff;
+                font-weight: 500;
+            }
+            
+            .rounded-box a {
+                color: #ffffff;
+                text-shadow: 0 0 1em #ffffff, 0 0 0.1em #8a2be2;
             }
 
             .rounded-box2 {
-                background-color: rgba(255, 255, 255, 0.1);
+                background-color: rgba(200, 152, 255, 0.2);
                 border-radius: 10px;
                 padding: 20px;
                 width: 90%;
-                margin-top: 10px;
+                margin-top: 40px;
                 margin-left: 79px;
                 padding-left: 10%;
                 padding-right: 10%;
@@ -257,41 +301,31 @@
                 position: relative;
                 box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
                 transition: transform 1s ease;
+                text-align: start;
+                opacity: 0; /* Set initial opacity to 0 */
+                animation: fadeIn 2s ease-in-out forwards; /* Animation properties */
             }
 
-            .rounded-box h2 {
-                font-size: 24px;
-                font-weight: bold;
-                color: #ffffff;
-                margin-bottom: 20px;
-                
-            }
-
-            .rounded-box p {
-                font-size: 16px;
+            .rounded-box2 p {
+                font-size: larger;
                 color: #ffffff;
                 font-weight: 500;
             }
 
             .small-rounded-box {
-                background-color: rgba(255, 255, 255, 0.1);
+                background-color: rgba(200, 152, 255, 0.2);
                 border-radius: 10px;
                 padding: 20px;
                 width: 18%;
                 margin-top: 30px;
                 margin-right: -20px;
-                margin-left: 105px; /* Set to 0 initially */
+                margin-left: 101px; /* moves the boxes left to right */
                 position: relative;
                 box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
                 transition: transform 1s ease;
                 justify-content: center;
-            }
-
-            /* Add media query to adjust spacing for smaller screens */
-            @media (max-width: 768px) {
-                .small-rounded-box {
-                    margin-right: 20px;
-                }
+                opacity: 0; /* Set initial opacity to 0 */
+                animation: fadeIn 2s ease-in-out forwards; /* Animation properties */
             }
 
             .small-rounded-box h3 {
@@ -299,79 +333,223 @@
                 font-weight: bold;
                 color: #ffffff;
                 margin-bottom: 10px;
+                text-shadow: 0 0 1em #ffffff, 0 0 0.1em #8a2be2;
+            }
+
+            @media (max-width: 1500px) {
+                
+                .container {
+                    flex-direction: column;
+                    text-align: center; /* Center the content in small screens */
+                    
+                }
+                .wrapper {
+                    overflow-y: auto;
+                }
+                .rounded-box {
+                    width: 240%;
+                    margin-left: -392px;
+                    margin-right: auto;
+                }
+
+                .rounded-box2 {
+                    width: 150%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .small-rounded-box {
+                    width: 22%; /* Make the small-rounded-boxes take the full width */
+                    margin-left: 23px;
+                    margin-right: 10px;
+                }
+
+                form {
+                    flex-direction: column;
+                }
+
+                form input,
+                form button {
+                    width: 100%;
+                    margin: 0 0 10px 0;
+                }
+            }
+
+            @media (max-width: 1250px) {
+                
+                .container {
+                    flex-direction: column;
+                    text-align: center; /* Center the content in small screens */
+                    
+                }
+                .wrapper {
+                    overflow-y: auto;
+                }
+                .rounded-box {
+                    width: 200%;
+                    margin-left: -280px;
+                    margin-right: auto;
+                }
+
+                .rounded-box2 {
+                    width: 150%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .small-rounded-box {
+                    width: 40%; /* Make the small-rounded-boxes take the full width */
+                    margin-left: 62px;
+                    margin-right: 10px;
+                }
+
+                form {
+                    flex-direction: column;
+                }
+
+                form input, form button {
+                    width: 100%;
+                    margin: 0 0 10px 0;
+                }
+                
+                .bg-bubbles li {
+                    position: absolute;
+                    list-style: none;
+                    display: block;
+                    width: 40px;
+                    height: 40px;
+                    background-color: rgba(255,255,255,0.15);
+                    bottom: -350px;
+                    -webkit-animation: square 25s infinite;
+                    animation: square 25s infinite;
+                    -webkit-transition-timing-function: linear;
+                    transition-timing-function: linear;
+                }
+
+            }
+
+            @media (max-width: 1100px) {
+                
+                .container {
+                    flex-direction: column;
+                    text-align: center; /* Center the content in small screens */
+                    
+                }
+                .wrapper {
+                    overflow-y: auto;
+                }
+                .rounded-box {
+                    width: 90%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .rounded-box2 {
+                    width: 90%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .small-rounded-box {
+                    width: 100%; /* Make the small-rounded-boxes take the full width */
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+
+                form {
+                    flex-direction: column;
+                }
+
+                form input,
+                form button {
+                    width: 100%;
+                    margin: 0 0 10px 0;
+                }
             }
 
         </style>
 
     </head> 
 
-    <body>
+    <body >
         <div class="wrapper">
             <div class="container">
-                <h1>Welcome To My Personal Space</h1>
+                <h1>Welcome To My Silly Place</h1>
 
                     <!-- iputs and button
                         <form class="form">
                             <input type="text" placeholder="Username">
                             <input type="password" placeholder="Password">
-                            <button type="submit" id="login-button">Login</button>
+                            <button type="submit" id="redirect-button">Login</button>
                         </form>
                     -->
 
                 <div class="rounded-box">
                     <div class="rounded-box2">
                         <h2>Introduction</h2>
-                        <p>ora boas pessoal daqui quem fala é o bossmediano e o itzrodripvp tamos aqui num vídeo de minecraft skywars e sim pessoal e pirata , hoje vamos usar o kit stomper do hg mas no skywars para vocês fazerem isto tem q dar download do link do Skype ne  e vai tar lá o mod do kit stopmer. 
-                        Mod super suave muito de andar na nave ta ligado?  dps de dar download do link do Skype vocês têm q dar sub no canal do gongas1221 ai quando dando sub vai tar la o modj dps disso vão no goncalojoaquimlimagongas@blog.pt  blog q vai tar na descrição
-                        ,ne amigos e dps e só abrir a pasta ponto minecraft e ta ai galera fácil de mais dps de fzr isso só basta ligar a panela por o gás no máximo e depois opel corsa valeu
-                        ora boas pessoal daqui quem fala é o bossmediano e o itzrodripvp tamos aqui num vídeo de minecraft skywars e sim pessoal e pirata , hoje vamos usar o kit stomper do hg mas no skywars para vocês fazerem isto tem q dar download do link do Skype ne  e vai tar lá o mod do kit stopmer. 
-                        Mod super suave muito de andar na nave ta ligado?  dps de dar download do link do Skype vocês têm q dar sub no canal do gongas1221 ai quando dando sub vai tar la o modj dps disso vão no goncalojoaquimlimagongas@blog.pt  blog q vai tar na descrição
-                        ,ne amigos e dps e só abrir a pasta ponto minecraft e ta ai galera fácil de mais dps de fzr isso só basta ligar a panela por o gás no máximo e depois opel corsa valeu
-                        ora boas pessoal daqui quem fala é o bossmediano e o itzrodripvp tamos aqui num vídeo de minecraft skywars e sim pessoal e pirata , hoje vamos usar o kit stomper do hg mas no skywars para vocês fazerem isto tem q dar download do link do Skype ne  e vai tar lá o mod do kit stopmer. 
-                        Mod super suave muito de andar na nave ta ligado?  dps de dar download do link do Skype vocês têm q dar sub no canal do gongas1221 ai quando dando sub vai tar la o modj dps disso vão no goncalojoaquimlimagongas@blog.pt  blog q vai tar na descrição
-                        ,ne amigos e dps e só abrir a pasta ponto minecraft e ta ai galera fácil de mais dps de fzr isso só basta ligar a panela por o gás no máximo e depois opel corsa valeu
-                    </p>
+                        <p style="text-align: center;">
+                            Hello and Welcome to my page :) <br>
+                            <br>
+                            I am an 18 years old guy who is currently passing his driver's license test. <br>
+                            Huuum furthermore I like coding, gaming and I like cats because they can be quite silly sometimes I guess. <br>   
+                            I myself can also be very silly sometimes so yes. <br>
+                            <br>
+                        </p>
+                        <!-- Second part of the rounded box text yk-->
+                        <h2>About This Page</h2>
+                        <p style="text-align: center;"> This page is mainly a hub for stuff I am coding which are stored on my <a href="https://github.com/r1sque/r1sque.github.io" target="_blank">GitHub</a>
+                            but it is also a place where I will upload and document of about stuff I am interested in as a way to easily access them for myself or for other's such as:  
+                        </p>
+                        <br>
+                        <p style="font-size: large;">
+                            • &nbsp;&nbsp;&nbsp;&nbsp;  ModeratorHub - Ban Report Form <br>
+                            • &nbsp;&nbsp;&nbsp;&nbsp;  GTA 5 Modding such as Graphics Mods, Add-on Cars, Modified game files for new textures, ... <br>
+                            • &nbsp;&nbsp;&nbsp;&nbsp;  GTA 5 Modding (cheat related) such as GTA online account modding, Money, Modded Cars, Modded Outfits, ... <br>
+                            • &nbsp;&nbsp;&nbsp;&nbsp;  Silly cats <br>
+                            • &nbsp;&nbsp;&nbsp;&nbsp;  Assetto Corsa Modding (maybe)
+                        </p>
                     </div>
 
                     <!-- Add four small-rounded-boxes with their respective content -->
                     <div class="small-rounded-box">
-                        <h3>ModeratorHub - Ban Report Form</h3>
+                        <h3>ModeratorHub - Ban log Form</h3>
                         
-                        <p>A tool used to make quick forms for a qucker and cleaner way for manual ban log.</p>
+                        <p>A tool used to make quick forms for a quicker and cleaner way for manual ban log.</p>
 
                         <!-- Add link or content here -->
                         <form class="form">
-                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://r1sque.github.io/reports')" type="button" id="login-button">Moderation-Hub</button>
+                            <button onclick="animateAndRedirect('https://r1sque.github.io/reports')" type="button" id="redirect-button">Moderation-Hub Page</button>
                         </form>
                     </div>
 
                     <div class="small-rounded-box">
-                        <h3>Xdev Outfit-Editor</h3>
+                        <h3>GTA 5 Modding</h3>
                         <!-- Add link or content here -->
 
-                        <p>A GTA 5 tool that allows you to customize and make modded outfits.</p>
+                        <p>GTA 5 Modding such as Graphics Mods, Add-on Cars, Modified game files for new textures, ... 
+                        </p>
+                        <form class="form">
+                            <button onclick="animateAndRedirect('https://google.com')" type="button" id="redirect-button">GTA 5 Mod Page</button>
+                        </form>
+                    </div>
+
+                    <div class="small-rounded-box">
+                        <h3>GTA 5 Modding (cheat related)</h3>
+                        <!-- Add link or content here -->
+
+                        <p>GTA 5 Modding such as GTA online account modding, Money, Modded Cars, Modded Outfits, ...</p>
+                        <form class="form">
+                            <button onclick="animateAndRedirect('https://google.com')" type="button" id="redirect-button">GTA 5 Modding page</button>
+                        </form>
+                    </div>
+
+                    <div class="small-rounded-box">
+                        <h3>silly milly</h3>
+                        <!-- Add link or content here -->
+                        <p>Sily Milly is a silly cat that like to do silly stuff like Blehh.</p>
                         <br>
                         <form class="form">
-                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://google.com')" type="button" id="login-button">Xdev Ooutfit Editor</button>
-                        </form>
-                    </div>
-
-                    <div class="small-rounded-box">
-                        <h3>Mini-Garage</h3>
-                        <!-- Add link or content here -->
-
-                        <p>A GTA 5 tool that allows you to customize and make modded cars.</p>
-                        <br>
-                        <form class="form">
-                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://youtube.com')" type="button" id="login-button">Mini-Garage</button>
-                        </form>
-                    </div>
-
-                    <div class="small-rounded-box">
-                        <h3>Link 4</h3>
-                        <!-- Add link or content here -->
-                        <form class="form">
-                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://www.youtube.com/@ressubd')" type="button" id="login-button">Moderation-Hub</button>
+                            <button onclick="animateAndRedirect('https://www.youtube.com/@ressubd')" type="button" id="redirect-button">Silly Milly</button>
                         </form>
                     </div>
 
@@ -398,18 +576,13 @@
     
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script>
-    
-            function redirectToPage(targetPageUrl) {
-                    // Use the window.location.href to redirect to the specified URL
-                    window.location.href = targetPageUrl;
-            }
-            function animateAndRedirect() {
+            function animateAndRedirect(url) {
                 var button = document.querySelector('.rounded-box form button');
                 var container = document.querySelector('.container');
                 var roundedBox = document.querySelector('.rounded-box');
 
                 // Play the button press animation
-                button.style.animation = 'buttonPress 1.5s ease-in-out';
+                button.style.animation = 'buttonPress 2s ease-in-out';
 
                 // Change the button text to
                 button.textContent = 'Preparing Transition...';
@@ -420,10 +593,12 @@
 
                 // After 1.5 seconds, redirect to the specified page
                 setTimeout(function () {
-                    redirectToPage();
-                }, 1500);
+                    window.location.href = url;
+                }, 1000);
             }
+ 
         </script>
     </body>
 
 </html>
+
