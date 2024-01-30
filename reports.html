@@ -198,9 +198,9 @@
 
         // Format Discord message with a hidden link
         var discordMessage = `**Ban Report:**
-                                User: ${providedID} (${providedUsername})
-                                Reason: ${providedReason}
-                                Evidence/Proof: [Hidden Link](<${providedEvidence}>)
+                                - User: ${providedID} (${providedUsername})
+                                - Reason: ${providedReason}
+                                - Evidence/Proof: [Hidden Link](<${providedEvidence}>)
 
                                 **Moderator Notes:**
                                 - Type of Punishment: ${typePunishment}
@@ -303,9 +303,9 @@
 
       // Format Discord message with a hidden link
       document.getElementById('discordMessage').value = `**Ban Report:**
-User: ${providedID} (${providedUsername})
-Reason: ${providedReason}
-Evidence/Proof: [Hidden Link](<${providedEvidence}>)
+- User: ${providedID} (${providedUsername})
+- Reason: ${providedReason}
+- Evidence/Proof: [Hidden Link](<${providedEvidence}>)
 
 **Moderator Notes:**
 - Type of Punishment: ${typePunishment}
