@@ -20,6 +20,17 @@
                 font-weight: 300;
                 height: 100%;
                 margin: 0; /* Remove default margin */
+                opacity: 0; /* Set initial opacity to 0 */
+                animation: fadeIn 2s ease-in-out forwards; /* Animation properties */
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0; /* Starting opacity */
+                }
+                to {
+                    opacity: 1; /* Ending opacity */
+                }
             }
 
             body ::-webkit-input-placeholder {
@@ -82,7 +93,8 @@
                 margin-left: auto;
             }
             form {
-                padding: 20px 0;
+                padding-top: 20px;
+                padding-bottom: 10px;
                 position: relative;
                 z-index: 2;
                 transition: opacity 1s ease; /* Add transition property */
@@ -233,7 +245,7 @@
                 background-color: rgba(255, 255, 255, 0.1);
                 border-radius: 10px;
                 padding: 20px;
-                margin-top: 5vh;
+                margin-top: 4vh;
                 width: 306%;
                 margin-left: -103%;
                 padding-left: 10%;
@@ -244,6 +256,28 @@
                 display: flex; /* Use flexbox to arrange child elements */
                 flex-wrap: wrap; /* Allow wrapping to the next line */
 
+            }
+
+            .rounded-box h2 {
+                text-shadow: 0 0 1em #ffffff, 0 0 0.1em #8a2be2;
+                font-size: 24px;
+                font-weight: bold;
+                color: #ffffff;
+                margin-bottom: 20px;
+                text-align: center;
+                text-decoration: underline;
+                text-underline-position: under;
+            }
+            
+            .rounded-box p {
+                font-size: 16px;
+                color: #ffffff;
+                font-weight: 500;
+            }
+            
+            .rounded-box a {
+                color: #ffffff;
+                text-shadow: 0 0 1em #ffffff, 0 0 0.1em #8a2be2;
             }
 
             .rounded-box2 {
@@ -262,17 +296,8 @@
                 text-align: start;
             }
 
-            .rounded-box h2 {
-                text-shadow: 0 0 1em #ffffff, 0 0 0.1em #8a2be2;
-                font-size: 24px;
-                font-weight: bold;
-                color: #ffffff;
-                margin-bottom: 20px;
-                text-align: center;
-            }
-
-            .rounded-box p {
-                font-size: 16px;
+            .rounded-box2 p {
+                font-size: larger;
                 color: #ffffff;
                 font-weight: 500;
             }
@@ -303,6 +328,7 @@
                 font-weight: bold;
                 color: #ffffff;
                 margin-bottom: 10px;
+                text-shadow: 0 0 1em #ffffff, 0 0 0.1em #8a2be2;
             }
 
         </style>
@@ -325,21 +351,26 @@
                 <div class="rounded-box">
                     <div class="rounded-box2">
                         <h2>Introduction</h2>
-                        <br>
-                        <p style="text-align: center; ">
+                        <p style="text-align: center;">
                             Hello and Welcome to my page :) <br>
                             <br>
                             I am an average 18 years old guy who is currently passing his driver's license test. <br>
-                            Huuum I also like coding and gaming and I lite cat because they can be quite silly sometimes I guess <br>   
-                            I can somtimes very silly so yes <br>
-                            <br>
+                            Huuum furthermore I like coding, gaming and I like cats because they can be quite silly sometimes I guess. <br>   
+                            I myself can also be very silly sometimes so yes. <br>
                             <br>
                         </p>
-                        <p>
-                            <h3 style="text-shadow: 0 0 1em #ffffff, 0 0 0.1em #8a2be2; font-size: 22px; font-weight: bold; color: #ffffff; margin-bottom: 20px; text-align: center;">
-                                About This Page</h3>
-                            
-                            This page is mainly a hub for things I am coding which are stored one my <a href="https://github.com/r1sque/r1sque.github.io" target="_blank">GitHub</a> pages
+                        <!-- Second part of the rounded box text yk-->
+                        <h2>About This Page</h2>
+                        <p style="text-align: center;"> This page is mainly a hub for stuff I am coding which are stored on my <a href="https://github.com/r1sque/r1sque.github.io" target="_blank">GitHub</a>
+                            but it is also a place where I will upload and document of about stuff I am interested in as a way to easily access them for myself or for other's such as:  
+                        </p>
+                        <br>
+                        <p style="font-size: large;">
+                            • ModeratorHub - Ban Report Form <br>
+                            • GTA 5 Modding such as Graphics Mods, Add-on Cars, Modified game files for new textures, ... <br>
+                            • GTA 5 Modding (cheat related) such as GTA online account modding, Money, Modded Cars, Modded Outfits, ... <br>
+                            • Silly cats <br>
+                            • Assetto Corsa Modding (soon)
                         </p>
                     </div>
 
@@ -347,33 +378,32 @@
                     <div class="small-rounded-box">
                         <h3>ModeratorHub - Ban Report Form</h3>
                         
-                        <p>A tool used to make quick forms for a qucker and cleaner way for manual ban log.</p>
+                        <p>A tool used to make quick forms for a quicker and cleaner way for manual ban log.</p>
 
                         <!-- Add link or content here -->
                         <form class="form">
-                            <button onclick="animateAndRedirect()" href="/reports" type="button" id="redirect-button">Moderation-Hub Page</button>
+                            <button onclick="animateAndRedirect('https://google.com')" type="button" id="redirect-button">Moderation-Hub Page</button>
                         </form>
                     </div>
 
                     <div class="small-rounded-box">
-                        <h3>Xdev Outfit-Editor</h3>
+                        <h3>GTA 5 Modding</h3>
                         <!-- Add link or content here -->
 
-                        <p>A GTA 5 tool that allows you to customize and make modded outfits.</p>
-                        <br>
+                        <p>GTA 5 Modding such as Graphics Mods, Add-on Cars, Modified game files for new textures, ... 
+                        </p>
                         <form class="form">
-                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://google.com')" type="button" id="redirect-button">Xdev Page</button>
+                            <button onclick="animateAndRedirect('https://google.com')" type="button" id="redirect-button">Xdev Page</button>
                         </form>
                     </div>
 
                     <div class="small-rounded-box">
-                        <h3>Mini-Garage Car Editor</h3>
+                        <h3>GTA 5 Modding (cheat related)</h3>
                         <!-- Add link or content here -->
 
-                        <p>A GTA 5 tool that allows you to customize and make modded cars.</p>
-                        <br>
+                        <p>GTA 5 Modding such as GTA online account modding, Money, Modded Cars, Modded Outfits, ...</p>
                         <form class="form">
-                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://youtube.com')" type="button" id="redirect-button">Mini-Garage Page</button>
+                            <button onclick="animateAndRedirect('https://google.com')" type="button" id="redirect-button">Mini-Garage Page</button>
                         </form>
                     </div>
 
@@ -383,7 +413,7 @@
                         <p>Sily Milly is a silly cat that like to do silly stuff like Blehh.</p>
                         <br>
                         <form class="form">
-                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://www.youtube.com/@ressubd')" type="button" id="redirect-button">Moderation-Hub</button>
+                            <button onclick="animateAndRedirect('https://www.youtube.com/@ressubd')" type="button" id="redirect-button">Silly Milly</button>
                         </form>
                     </div>
 
@@ -410,7 +440,7 @@
     
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script>
-            function animateAndRedirect() {
+            function animateAndRedirect(url) {
                 var button = document.querySelector('.rounded-box form button');
                 var container = document.querySelector('.container');
                 var roundedBox = document.querySelector('.rounded-box');
@@ -427,9 +457,11 @@
 
                 // After 1.5 seconds, redirect to the specified page
                 setTimeout(function () {
-                    redirectToPage();
-                }, 1500);
+                    window.location.href = url;
+                }, 1000);
             }
+
+            
         </script>
     </body>
 
