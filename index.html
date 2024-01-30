@@ -77,7 +77,7 @@
                 transition-duration: 1s;
                 transition-timing-function: ease-in-put;
                 font-weight: 200;
-                text-shadow: 0 0 1em #8a2be2, 0 0 0.2em #8a2be2;
+                text-shadow: 0 0 1em #ffffff, 0 0 0.2em #8a2be2;
                 font-weight: bold;
                 margin-left: auto;
             }
@@ -134,6 +134,7 @@
                 width: 100%;
                 height: 100%;
                 z-index: 1;
+                pointer-events: none;
             }
             .bg-bubbles li {
                 position: absolute;
@@ -232,7 +233,7 @@
                 background-color: rgba(255, 255, 255, 0.1);
                 border-radius: 10px;
                 padding: 20px;
-                margin-top: 8vh;
+                margin-top: 5vh;
                 width: 306%;
                 margin-left: -103%;
                 padding-left: 10%;
@@ -242,14 +243,15 @@
                 transition: transform 1s ease;
                 display: flex; /* Use flexbox to arrange child elements */
                 flex-wrap: wrap; /* Allow wrapping to the next line */
+
             }
 
             .rounded-box2 {
-                background-color: rgba(255, 255, 255, 0.1);
+                background-color: rgba(200, 152, 255, 0.2);
                 border-radius: 10px;
                 padding: 20px;
                 width: 90%;
-                margin-top: 10px;
+                margin-top: 40px;
                 margin-left: 79px;
                 padding-left: 10%;
                 padding-right: 10%;
@@ -257,14 +259,16 @@
                 position: relative;
                 box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
                 transition: transform 1s ease;
+                text-align: start;
             }
 
             .rounded-box h2 {
+                text-shadow: 0 0 1em #ffffff, 0 0 0.1em #8a2be2;
                 font-size: 24px;
                 font-weight: bold;
                 color: #ffffff;
                 margin-bottom: 20px;
-                
+                text-align: center;
             }
 
             .rounded-box p {
@@ -274,13 +278,13 @@
             }
 
             .small-rounded-box {
-                background-color: rgba(255, 255, 255, 0.1);
+                background-color: rgba(200, 152, 255, 0.2);
                 border-radius: 10px;
                 padding: 20px;
                 width: 18%;
                 margin-top: 30px;
                 margin-right: -20px;
-                margin-left: 105px; /* Set to 0 initially */
+                margin-left: 101px; /* moves the boxes left to right */
                 position: relative;
                 box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
                 transition: transform 1s ease;
@@ -308,29 +312,35 @@
     <body>
         <div class="wrapper">
             <div class="container">
-                <h1>Welcome To My Personal Space</h1>
+                <h1>Welcome To My Silly Place</h1>
 
                     <!-- iputs and button
                         <form class="form">
                             <input type="text" placeholder="Username">
                             <input type="password" placeholder="Password">
-                            <button type="submit" id="login-button">Login</button>
+                            <button type="submit" id="redirect-button">Login</button>
                         </form>
                     -->
 
                 <div class="rounded-box">
                     <div class="rounded-box2">
                         <h2>Introduction</h2>
-                        <p>ora boas pessoal daqui quem fala é o bossmediano e o itzrodripvp tamos aqui num vídeo de minecraft skywars e sim pessoal e pirata , hoje vamos usar o kit stomper do hg mas no skywars para vocês fazerem isto tem q dar download do link do Skype ne  e vai tar lá o mod do kit stopmer. 
-                        Mod super suave muito de andar na nave ta ligado?  dps de dar download do link do Skype vocês têm q dar sub no canal do gongas1221 ai quando dando sub vai tar la o modj dps disso vão no goncalojoaquimlimagongas@blog.pt  blog q vai tar na descrição
-                        ,ne amigos e dps e só abrir a pasta ponto minecraft e ta ai galera fácil de mais dps de fzr isso só basta ligar a panela por o gás no máximo e depois opel corsa valeu
-                        ora boas pessoal daqui quem fala é o bossmediano e o itzrodripvp tamos aqui num vídeo de minecraft skywars e sim pessoal e pirata , hoje vamos usar o kit stomper do hg mas no skywars para vocês fazerem isto tem q dar download do link do Skype ne  e vai tar lá o mod do kit stopmer. 
-                        Mod super suave muito de andar na nave ta ligado?  dps de dar download do link do Skype vocês têm q dar sub no canal do gongas1221 ai quando dando sub vai tar la o modj dps disso vão no goncalojoaquimlimagongas@blog.pt  blog q vai tar na descrição
-                        ,ne amigos e dps e só abrir a pasta ponto minecraft e ta ai galera fácil de mais dps de fzr isso só basta ligar a panela por o gás no máximo e depois opel corsa valeu
-                        ora boas pessoal daqui quem fala é o bossmediano e o itzrodripvp tamos aqui num vídeo de minecraft skywars e sim pessoal e pirata , hoje vamos usar o kit stomper do hg mas no skywars para vocês fazerem isto tem q dar download do link do Skype ne  e vai tar lá o mod do kit stopmer. 
-                        Mod super suave muito de andar na nave ta ligado?  dps de dar download do link do Skype vocês têm q dar sub no canal do gongas1221 ai quando dando sub vai tar la o modj dps disso vão no goncalojoaquimlimagongas@blog.pt  blog q vai tar na descrição
-                        ,ne amigos e dps e só abrir a pasta ponto minecraft e ta ai galera fácil de mais dps de fzr isso só basta ligar a panela por o gás no máximo e depois opel corsa valeu
-                    </p>
+                        <br>
+                        <p style="text-align: center; ">
+                            Hello and Welcome to my page :) <br>
+                            <br>
+                            I am an average 18 years old guy who is currently passing his driver's license test. <br>
+                            Huuum I also like coding and gaming and I lite cat because they can be quite silly sometimes I guess <br>   
+                            I can somtimes very silly so yes <br>
+                            <br>
+                            <br>
+                        </p>
+                        <p>
+                            <h3 style="text-shadow: 0 0 1em #ffffff, 0 0 0.1em #8a2be2; font-size: 22px; font-weight: bold; color: #ffffff; margin-bottom: 20px; text-align: center;">
+                                About This Page</h3>
+                            
+                            This page is mainly a hub for things I am coding which are stored one my <a href="https://github.com/r1sque/r1sque.github.io" target="_blank">GitHub</a> pages
+                        </p>
                     </div>
 
                     <!-- Add four small-rounded-boxes with their respective content -->
@@ -341,7 +351,7 @@
 
                         <!-- Add link or content here -->
                         <form class="form">
-                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://r1sque.github.io/reports')" type="button" id="login-button">Moderation-Hub</button>
+                            <button onclick="animateAndRedirect()" href="/reports" type="button" id="redirect-button">Moderation-Hub Page</button>
                         </form>
                     </div>
 
@@ -352,26 +362,28 @@
                         <p>A GTA 5 tool that allows you to customize and make modded outfits.</p>
                         <br>
                         <form class="form">
-                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://google.com')" type="button" id="login-button">Xdev Ooutfit Editor</button>
+                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://google.com')" type="button" id="redirect-button">Xdev Page</button>
                         </form>
                     </div>
 
                     <div class="small-rounded-box">
-                        <h3>Mini-Garage</h3>
+                        <h3>Mini-Garage Car Editor</h3>
                         <!-- Add link or content here -->
 
                         <p>A GTA 5 tool that allows you to customize and make modded cars.</p>
                         <br>
                         <form class="form">
-                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://youtube.com')" type="button" id="login-button">Mini-Garage</button>
+                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://youtube.com')" type="button" id="redirect-button">Mini-Garage Page</button>
                         </form>
                     </div>
 
                     <div class="small-rounded-box">
-                        <h3>Link 4</h3>
+                        <h3>silly milly</h3>
                         <!-- Add link or content here -->
+                        <p>Sily Milly is a silly cat that like to do silly stuff like Blehh.</p>
+                        <br>
                         <form class="form">
-                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://www.youtube.com/@ressubd')" type="button" id="login-button">Moderation-Hub</button>
+                            <button onclick="animateAndRedirect()" onclick="redirectToPage('https://www.youtube.com/@ressubd')" type="button" id="redirect-button">Moderation-Hub</button>
                         </form>
                     </div>
 
@@ -398,11 +410,6 @@
     
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script>
-    
-            function redirectToPage(targetPageUrl) {
-                    // Use the window.location.href to redirect to the specified URL
-                    window.location.href = targetPageUrl;
-            }
             function animateAndRedirect() {
                 var button = document.querySelector('.rounded-box form button');
                 var container = document.querySelector('.container');
