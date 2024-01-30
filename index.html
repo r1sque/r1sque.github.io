@@ -328,13 +328,6 @@
                 animation: fadeIn 2s ease-in-out forwards; /* Animation properties */
             }
 
-            /* Add media query to adjust spacing for smaller screens */
-            @media (max-width: 768px) {
-                .small-rounded-box {
-                    margin-right: 20px;
-                }
-            }
-
             .small-rounded-box h3 {
                 font-size: 18px;
                 font-weight: bold;
@@ -343,11 +336,158 @@
                 text-shadow: 0 0 1em #ffffff, 0 0 0.1em #8a2be2;
             }
 
+            @media (max-width: 1500px) {
+                
+                .container {
+                    flex-direction: column;
+                    text-align: center; /* Center the content in small screens */
+                    
+                }
+                .wrapper {
+                    overflow-y: auto;
+                }
+                .rounded-box {
+                    width: 240%;
+                    margin-left: -392px;
+                    margin-right: auto;
+                }
+
+                .rounded-box2 {
+                    width: 150%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .small-rounded-box {
+                    width: 22%; /* Make the small-rounded-boxes take the full width */
+                    margin-left: 23px;
+                    margin-right: 10px;
+                }
+
+                form {
+                    flex-direction: column;
+                }
+
+                form input,
+                form button {
+                    width: 100%;
+                    margin: 0 0 10px 0;
+                }
+            }
+
+            @media (max-width: 1250px) {
+                
+                .container {
+                    flex-direction: column;
+                    text-align: center; /* Center the content in small screens */
+                    
+                }
+                .wrapper {
+                    overflow-y: auto;
+                }
+                .rounded-box {
+                    width: 200%;
+                    margin-left: -280px;
+                    margin-right: auto;
+                }
+
+                .rounded-box2 {
+                    width: 150%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .small-rounded-box {
+                    width: 40%; /* Make the small-rounded-boxes take the full width */
+                    margin-left: 62px;
+                    margin-right: 10px;
+                }
+
+                form {
+                    flex-direction: column;
+                }
+
+                form input, form button {
+                    width: 100%;
+                    margin: 0 0 10px 0;
+                }
+                
+                .bg-bubbles li {
+                    position: absolute;
+                    list-style: none;
+                    display: block;
+                    width: 40px;
+                    height: 40px;
+                    background-color: rgba(255,255,255,0.15);
+                    bottom: -350px;
+                    -webkit-animation: square 25s infinite;
+                    animation: square 25s infinite;
+                    -webkit-transition-timing-function: linear;
+                    transition-timing-function: linear;
+                }
+
+            }
+
+            @media (max-width: 1100px) {
+                
+                .container {
+                    flex-direction: column;
+                    text-align: center; /* Center the content in small screens */
+                    
+                }
+                .wrapper {
+                    overflow-y: auto;
+                }
+                .rounded-box {
+                    width: 90%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    padding: 10px;
+                }
+
+                .rounded-box2 {
+                    width: 90%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    padding: 10px;
+                }
+
+                .small-rounded-box {
+                    width: 100%; /* Make the small-rounded-boxes take the full width */
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+
+                form {
+                    flex-direction: column;
+                }
+
+                form input,
+                form button {
+                    width: 100%;
+                    margin: 0 0 10px 0;
+                }
+
+                .bg-bubbles li {
+                    position: absolute;
+                    list-style: none;
+                    display: block;
+                    width: 40px;
+                    height: 40px;
+                    background-color: rgba(255,255,255,0.15);
+                    bottom: -105%;
+                    -webkit-animation: square 25s infinite;
+                    animation: square 25s infinite;
+                    -webkit-transition-timing-function: linear;
+                    transition-timing-function: linear;
+                }
+            }
+
         </style>
 
     </head> 
 
-    <body>
+    <body >
         <div class="wrapper">
             <div class="container">
                 <h1>Welcome To My Silly Place</h1>
@@ -379,8 +519,8 @@
                         <br>
                         <p style="font-size: large;">
                             • &nbsp;&nbsp;&nbsp;&nbsp;  ModeratorHub - Ban Report Form <br>
-                            • &nbsp;&nbsp;&nbsp;&nbsp;  GTA 5 Modding such as Graphics Mods, Add-on Cars, Modified game files for new textures, ... <br>
                             • &nbsp;&nbsp;&nbsp;&nbsp;  GTA 5 Modding (cheat related) such as GTA online account modding, Money, Modded Cars, Modded Outfits, ... <br>
+                            • &nbsp;&nbsp;&nbsp;&nbsp;  GTA 5 Modding such as Graphics Mods, Add-on Cars, Modified game files for new textures, ... <br>
                             • &nbsp;&nbsp;&nbsp;&nbsp;  Silly cats <br>
                             • &nbsp;&nbsp;&nbsp;&nbsp;  Assetto Corsa Modding (maybe)
                         </p>
@@ -388,7 +528,7 @@
 
                     <!-- Add four small-rounded-boxes with their respective content -->
                     <div class="small-rounded-box">
-                        <h3>ModeratorHub - Ban Report Form</h3>
+                        <h3>ModeratorHub - Ban log Form</h3>
                         
                         <p>A tool used to make quick forms for a quicker and cleaner way for manual ban log.</p>
 
@@ -399,23 +539,23 @@
                     </div>
 
                     <div class="small-rounded-box">
+                        <h3>GTA 5 Modding (cheat related)</h3>
+                        <!-- Add link or content here -->
+
+                        <p>GTA 5 Modding such as GTA online account modding, Money, Modded Cars, Modded Outfits, ...</p>
+                        <form class="form">
+                            <button onclick="animateAndRedirect('https://www.youtube.com/watch?v=v6Krev6gvoI')" type="button" id="redirect-button">GTA 5 Modding page</button>
+                        </form>
+                    </div>
+
+                    <div class="small-rounded-box">
                         <h3>GTA 5 Modding</h3>
                         <!-- Add link or content here -->
 
                         <p>GTA 5 Modding such as Graphics Mods, Add-on Cars, Modified game files for new textures, ... 
                         </p>
                         <form class="form">
-                            <button onclick="animateAndRedirect('https://google.com')" type="button" id="redirect-button">GTA 5 Mod Page</button>
-                        </form>
-                    </div>
-
-                    <div class="small-rounded-box">
-                        <h3>GTA 5 Modding (cheat related)</h3>
-                        <!-- Add link or content here -->
-
-                        <p>GTA 5 Modding such as GTA online account modding, Money, Modded Cars, Modded Outfits, ...</p>
-                        <form class="form">
-                            <button onclick="animateAndRedirect('https://google.com')" type="button" id="redirect-button">GTA 5 Modding page</button>
+                            <button onclick="animateAndRedirect('https://www.youtube.com/watch?v=LOsN3z4Lrp8')" type="button" id="redirect-button">GTA 5 Mod Page</button>
                         </form>
                     </div>
 
@@ -425,7 +565,7 @@
                         <p>Sily Milly is a silly cat that like to do silly stuff like Blehh.</p>
                         <br>
                         <form class="form">
-                            <button onclick="animateAndRedirect('https://www.youtube.com/@ressubd')" type="button" id="redirect-button">Silly Milly</button>
+                            <button onclick="animateAndRedirect('https://www.youtube.com/watch?v=_sWhBPyQfzo')" type="button" id="redirect-button">Silly Milly</button>
                         </form>
                     </div>
 
@@ -477,3 +617,4 @@
     </body>
 
 </html>
+
