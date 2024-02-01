@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url(https://db.onlinewebfonts.com/c/d03fdeed9cc2e75a1f2ccb658f1e836a?family=NudMotoyaExCedar+W6);
+        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+        body {
+            background-color: #1a1a1a;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: 10px;
+        }
+
+        .container {
+            font-family: 'Source Sans Pro', sans-serif;
+            position: relative;
+            margin-left: -520px;
+            margin-bottom: 20px; /* Add margin for spacing */
+        }
+
+        .container h1 {
+            text-shadow: 0 0 5em #ffffff, 0 0 0.2em #ffffff;
+            font-family: "NudMotoyaExCedar W6";
+            font-weight: 100;
+            font-size: 40px;
+        }
+
+        nav ul {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: bold;
+            font-size: larger;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            position: fixed;
+            left: 50px;
+        }
+
+        nav li {
+            margin-top: 15px;
+            margin-right: 30px;
+            cursor: pointer;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column; /* Stack the title and text vertically */
+            align-items: center;
+            justify-content: center; /* Center vertically */
+            height: 100vh; /* Full height of the viewport */
+        }
+
+        .box-container {
+            display: flex; /* Set the box container to flex */
+            justify-content: center; /* Center the boxes horizontally */
+        }
+
+        .box {
+            position: relative; /* Make the box a positioning context */
+            border-radius: 15px;
+            width: 250px;
+            height: 320px;
+            margin: 30px 20px; /* Adjust margin for spacing */
+            background-color: #333;
+            user-select: none;
+            transition: transform 0.3s, filter 0.3s;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .boximage {
+            width: 250px;
+            height: 320px;
+            border-radius: 15px;
+            opacity: 0.5;
+        }
+
+        .boxlogo {
+            position: absolute;
+            top: 50%; /* Adjust the top position as needed */
+            left: 50%; /* Adjust the left position as needed */
+            transform: translate(-50%, -130%); /* Center the logo */
+            height: 70px;
+            width: 80px;
+            opacity: 0.8;
+        }
+
+        .box p {
+            font-family: 'Verdana', sans-serif;
+            font-size: large;
+            position: absolute;
+            top: 50%; /* Adjust the top position as needed */
+            left: 50%; /* Adjust the left position as needed */
+            transform: translate(-50%, 450%); /* Center the text */
+            margin: 0; /* Remove default margin */
+            opacity: 0.9;
+            text-shadow: 0 0 4em #ffffff, 0 0 0.2em #ffffff;
+        }
+
+        .box:hover {
+            transform: scale(1.2);
+            filter: brightness(1.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li onclick="navigateTo('https://google.com')">Main Page</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="container">
+            <h1>Graphics Modifications Online</h1>
+            <p>
+                Enjoy realistic graphics while playing GTA 5 online. <br>
+                I am sharing my collection of top graphics mods offering redesigned lighting, weather, color correction, <br>
+                as well as ENB effects and other improvements.
+            </p>
+        </div>
+
+        <!-- QUANT V / NaturalVision / Redux / AliV2 / VisualV / Misc (other mods that arent full on graphics mod)-->
+        <div class="box-container">
+            <div class="box">
+                <a href="https://vrp.network/graphics/mods/projectv">
+                    <img class="boximage" src="../Graphics/images/Quant V/QUANT V Box.png" alt="Quant V">
+                    <img class="boxlogo" src="../Graphics/images//Quant V/QUANT V Logo.png" alt="Quant V Logo">
+                </a>
+                <p>
+                    QUANT V
+                </p>
+            </div>
+            <div class="box">
+                <a href="https://vrp.network/graphics/mods/projectv">
+                    <img class="boximage" src="../Graphics/images/NaturalVision/NaturalVision Box.png" alt="NaturalVision">
+                    <img class="boxlogo"style="height: 80px; width: 110px; transform: translate(-50%, -110%);" src="../Graphics/images/NaturalVision/NaturalVision logo.png" alt="NaturalVision Logo">
+                </a>
+                <p>
+                    NaturalVision
+                </p>
+            </div>
+            <div class="box">
+                <a href="https://vrp.network/graphics/mods/projectv">
+                    <img class="boximage" src="../Graphics/images/Redux/Redux Box.png" alt="Redux">
+                    <img class="boxlogo" style="height: 80px; width: 80x; transform: translate(-50%, -110%);" src="../Graphics/images/Redux/gta5_redux_logo.png" alt="Redux Logo">
+                </a>
+                <p>
+                    Redux
+                </p>
+            </div>
+            <div class="box">
+                <a href="https://vrp.network/graphics/mods/projectv">
+                    <img class="boximage" src="../Graphics/images/AliV2/AliV2 Box.png" alt="AliV2">
+                    <img class="boxlogo" style="transform: translate(-50%, -120%)" src="../Graphics/images/AliV2/AliV2 Logo.png" alt="AliV2 Logo">
+                </a>
+                <p>
+                    AliV2
+                </p>
+            </div>
+            <div class="box">
+                <a href="https://vrp.network/graphics/mods/projectv">
+                    <img class="boximage" src="../Graphics/images/VisualV/VisualV Box.png" alt="Visual V">
+                    <img class="boxlogo" style="height: 20px; width: 100x; transform: translate(-50%, -110%);" src="../Graphics/images/VisualV/VisualV Logo.png" alt="Visual V Logo">
+                </a>
+                <p>
+                    Visual V
+                </p>
+            </div>
+            <div class="box">
+                <a href="https://vrp.network/graphics/mods/projectv">
+                    <img class="boximage" src="../Graphics/images/Misc/Misc Box.png" alt="Quant V">
+                    <img class="boxlogo"  style="height: 80px; width: 80px; transform: translate(-50%, -110%);" src="../Graphics/images/Misc/Misc Logo.png" alt="Quant V Logo">
+                </a>
+                <p>
+                    MISC
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+
+    </script>
+
+</body>
+
+</html>
