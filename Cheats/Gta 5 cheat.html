@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Personal Landing Page</title>
+       
+        <style>
+
+            @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-weight: 300;
+            }
+            body {
+                font-family: 'Source Sans Pro', sans-serif;
+                color: white;
+                font-weight: 300;
+                height: 100%;
+                margin: 0; /* Remove default margin */ 
+            }
+
+            body ::-webkit-input-placeholder {
+                font-family: 'Source Sans Pro', sans-serif;
+                color: white;
+                font-weight: 300;
+            }
+            body :-moz-placeholder {
+                font-family: 'Source Sans Pro', sans-serif;
+                color: white;
+                opacity: 1;
+                font-weight: 300;
+            }
+            body ::-moz-placeholder {
+                font-family: 'Source Sans Pro', sans-serif;
+                color: white;
+                opacity: 1;
+                font-weight: 300;
+            }
+            body :-ms-input-placeholder {
+                font-family: 'Source Sans Pro', sans-serif;
+                color: white;
+                font-weight: 300;
+            }
+            .wrapper {
+                background: #000000;
+                background: -webkit-linear-gradient(top left, #000000 0%, #272727 100%);
+                background: -moz-linear-gradient(top left, #000000 0%, #272727 100%);
+                background: -o-linear-gradient(top left, #000000 0%, #272727 100%);
+                background: linear-gradient(to bottom right, #000000 0%, #272727 100%);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start; 
+                padding-top: 20px; /* Add some top padding */
+            }
+            .wrapper.form-success .container h1 {
+                transform: translateY(85px);
+            }
+            .container {
+                max-width: 600px;
+                padding: 0 20px;
+                /* Adjust padding */
+                text-align: center;
+                width: 100%;
+                transition: opacity 1s ease; /* Add transition property */
+            }
+            .container h1 {
+                font-size: 40px;
+                transition-duration: 1s;
+                transition-timing-function: ease-in-put;
+                font-weight: 200;
+                text-shadow: 0 0 1em #ffffff, 0 0 0.2em #8a2be2;
+                font-weight: bold;
+                margin-left: auto;
+                opacity: 0; /* Set initial opacity to 0 */
+                animation: fadeIn 2.5s ease-in-out forwards; /* Animation properties */
+            }
+            form {
+                padding-top: 20px;
+                padding-bottom: 10px;
+                position: relative;
+                z-index: 2;
+                transition: opacity 1s ease; /* Add transition property */
+            }
+            form input {
+                display: block;
+                appearance: none;
+                outline: 0;
+                border: 1px solid rgba(255,255,255,0.4);
+                background-color: rgba(255,255,255,0.2);
+                width: 250px;
+                border-radius: 3px;
+                padding: 10px 15px;
+                margin: 0 auto 10px auto;
+                text-align: center;
+                font-size: 18px;
+                color: white;
+                transition-duration: 0.25s;
+                font-weight: 300;
+            }
+            form input:hover {
+                background-color: rgba(255,255,255,0.4);
+            }
+            form input:focus {
+                background-color: white;
+                width: 300px;
+                color: #8a2be2;
+            }
+            form button {
+                appearance: none;
+                outline: 0;
+                background-color: white;
+                border: 0;
+                padding: 10px 15px;
+                color: #8a2be2;
+                border-radius: 3px;
+                width: 250px;
+                cursor: pointer;
+                font-size: 18px;
+                transition-duration: 0.25s;
+            }
+            form button:hover {
+                background-color: #e3c5ff;
+            }
+
+            .rounded-box {
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 10px;
+                padding: 20px;
+                margin-top: 4vh;
+                width: 306%;
+                margin-left: -103%;
+                padding-left: 10%;
+                padding-right: 10%;
+                position: relative;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+                transition: transform 1s ease;
+                display: flex; /* Use flexbox to arrange child elements */
+                flex-wrap: wrap; /* Allow wrapping to the next line */
+                animation: 1.5s ease-out 0s 1 slideInUp;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0; /* Starting opacity */
+                }
+                to {
+                    opacity: 1; /* Ending opacity */
+                }
+            }
+            @keyframes slideInUp {
+                0% {
+                transform: translateY(-80%);
+                }
+                100% {
+                transform: translateY(0);
+                }
+            }
+
+            .rounded-box h2 {
+                text-shadow: 0 0 1em #ffffff, 0 0 0.1em #8a2be2;
+                font-size: 24px;
+                font-weight: bold;
+                color: #ffffff;
+                margin-bottom: 20px;
+                text-align: center;
+                text-decoration: underline;
+                text-underline-position: under;
+            }
+            
+            .rounded-box p {
+                font-size: 16px;
+                color: #ffffff;
+                font-weight: 500;
+            }
+            
+            .rounded-box a {
+                color: #ffffff;
+                text-shadow: 0 0 1em #ffffff, 0 0 0.1em #8a2be2;
+            }
+
+            .rounded-box2 {
+                background-color: rgba(200, 152, 255, 0.2);
+                border-radius: 10px;
+                padding: 20px;
+                width: 90%;
+                margin-top: 40px;
+                margin-left: 79px;
+                padding-left: 10%;
+                padding-right: 10%;
+                box-sizing: border-box;
+                position: relative;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+                transition: transform 1s ease;
+                text-align: start;
+                opacity: 0; /* Set initial opacity to 0 */
+                animation: fadeIn 2s ease-in-out forwards; /* Animation properties */
+            }
+
+            .rounded-box2 p {
+                font-size: larger;
+                color: #ffffff;
+                font-weight: 500;
+            }
+
+            .small-rounded-box {
+                background-color: rgba(200, 152, 255, 0.2);
+                border-radius: 10px;
+                padding: 20px;
+                width: 18%;
+                margin-top: 30px;
+                margin-right: -20px;
+                margin-left: 101px; /* moves the boxes left to right */
+                position: relative;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+                transition: transform 1s ease;
+                justify-content: center;
+                opacity: 0; /* Set initial opacity to 0 */
+                animation: fadeIn 2s ease-in-out forwards; /* Animation properties */
+            }
+
+            .small-rounded-box h3 {
+                font-size: 18px;
+                font-weight: bold;
+                color: #ffffff;
+                margin-bottom: 10px;
+                text-shadow: 0 0 1em #ffffff, 0 0 0.1em #8a2be2;
+            }
+
+            @media (max-width: 1500px) {
+                
+                .container {
+                    flex-direction: column;
+                    text-align: center; /* Center the content in small screens */
+                    
+                }
+                .wrapper {
+                    overflow-y: auto;
+                }
+                .rounded-box {
+                    width: 240%;
+                    margin-left: -392px;
+                    margin-right: auto;
+                }
+
+                .rounded-box2 {
+                    width: 150%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .small-rounded-box {
+                    width: 22%; /* Make the small-rounded-boxes take the full width */
+                    margin-left: 23px;
+                    margin-right: 10px;
+                }
+
+                form {
+                    flex-direction: column;
+                }
+
+                form input,
+                form button {
+                    width: 100%;
+                    margin: 0 0 10px 0;
+                }
+            }
+
+            @media (max-width: 1250px) {
+                
+                .container {
+                    flex-direction: column;
+                    text-align: center; /* Center the content in small screens */
+                    
+                }
+                .wrapper {
+                    overflow-y: auto;
+                }
+                .rounded-box {
+                    width: 200%;
+                    margin-left: -280px;
+                    margin-right: auto;
+                }
+
+                .rounded-box2 {
+                    width: 150%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .small-rounded-box {
+                    width: 40%; /* Make the small-rounded-boxes take the full width */
+                    margin-left: 62px;
+                    margin-right: 10px;
+                }
+
+                form {
+                    flex-direction: column;
+                }
+
+                form input, form button {
+                    width: 100%;
+                    margin: 0 0 10px 0;
+                }
+
+            }
+
+            @media (max-width: 1100px) {
+                
+                .container {
+                    flex-direction: column;
+                    text-align: center; /* Center the content in small screens */
+                    
+                }
+                .wrapper {
+                    overflow-y: auto;
+                }
+                .rounded-box {
+                    width: 90%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    padding: 10px;
+                }
+
+                .rounded-box2 {
+                    width: 90%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    padding: 10px;
+                }
+
+                .small-rounded-box {
+                    width: 100%; /* Make the small-rounded-boxes take the full width */
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+
+                form {
+                    flex-direction: column;
+                }
+
+                form input,
+                form button {
+                    width: 100%;
+                    margin: 0 0 10px 0;
+                }
+            }
+
+        </style>
+
+    </head> 
+
+    <body >
+        <div class="wrapper">
+            <div class="container">
+                <h1>Welcome To My Silly Place</h1>
+
+                    <!-- iputs and button
+                        <form class="form">
+                            <input type="text" placeholder="Username">
+                            <input type="password" placeholder="Password">
+                            <button type="submit" id="redirect-button">Login</button>
+                        </form>
+                    -->
+
+                <div class="rounded-box">
+                    <div class="rounded-box2">
+                        <h2>Introduction</h2>
+                        <p style="text-align: center;">
+                            Hello and Welcome to my page :) <br>
+                            <br>
+                            I am an 18 years old guy who is currently passing his driver's license test. <br>
+                            Huuum furthermore I like coding, gaming and I like cats because they can be quite silly sometimes I guess. <br>   
+                            I myself can also be very silly sometimes so yes. <br>
+                            <br>
+                        </p>
+                        <!-- Second part of the rounded box text yk-->
+                        <h2>About This Page</h2>
+                        <p style="text-align: center;"> This page is mainly a hub for stuff I am coding which are stored on my <a href="https://github.com/r1sque/r1sque.github.io" target="_blank">GitHub</a>
+                            but it is also a place where I will upload and document of about stuff I am interested in as a way to easily access them for myself or for other's such as:  
+                        </p>
+                        <br>
+                        <p style="font-size: large;">
+                            • &nbsp;&nbsp;&nbsp;&nbsp;  ModeratorHub - Ban Report Form <br>
+                            • &nbsp;&nbsp;&nbsp;&nbsp;  GTA 5 Modding (cheat related) such as GTA online account modding, Money, Modded Cars, Modded Outfits, ... <br>
+                            • &nbsp;&nbsp;&nbsp;&nbsp;  GTA 5 Modding such as Graphics Mods, Add-on Cars, Modified game files for new textures, ... <br>
+                            • &nbsp;&nbsp;&nbsp;&nbsp;  Silly cats <br>
+                            • &nbsp;&nbsp;&nbsp;&nbsp;  Assetto Corsa Modding (maybe)
+                        </p>
+                    </div>
+
+                    <!-- Add four small-rounded-boxes with their respective content -->
+                    <div class="small-rounded-box">
+                        <h3>ModeratorHub - Ban log Form</h3>
+                        
+                        <p>A tool used to make quick forms for a quicker and cleaner way for manual ban log.</p>
+
+                        <!-- Add link or content here -->
+                        <form class="form">
+                            <button onclick="animateAndRedirect('https://r1sque.github.io/reports')" type="button" id="redirect-button">Moderation-Hub Page</button>
+                        </form>
+                    </div>
+
+                    <div class="small-rounded-box">
+                        <h3>GTA 5 Modding (cheat related)</h3>
+                        <!-- Add link or content here -->
+
+                        <p>GTA 5 Modding such as GTA online account modding, Money, Modded Cars, Modded Outfits, ...</p>
+                        <form class="form">
+                            <button onclick="animateAndRedirect('https://www.youtube.com/watch?v=v6Krev6gvoI')" type="button" id="redirect-button">GTA 5 Modding page</button>
+                        </form>
+                    </div>
+
+                    <div class="small-rounded-box">
+                        <h3>GTA 5 Modding</h3>
+                        <!-- Add link or content here -->
+
+                        <p>GTA 5 Modding such as Graphics Mods, Add-on Cars, Modified game files for new textures, ... 
+                        </p>
+                        <form class="form">
+                            <button onclick="animateAndRedirect('https://www.youtube.com/watch?v=LOsN3z4Lrp8')" type="button" id="redirect-button">GTA 5 Mod Page</button>
+                        </form>
+                    </div>
+
+                    <div class="small-rounded-box">
+                        <h3>silly milly</h3>
+                        <!-- Add link or content here -->
+                        <p>Sily Milly is a silly cat that like to do silly stuff like Blehh.</p>
+                        <br>
+                        <form class="form">
+                            <button onclick="animateAndRedirect('https://www.youtube.com/watch?v=_sWhBPyQfzo')" type="button" id="redirect-button">Silly Milly</button>
+                        </form>
+                    </div>
+
+                </div>
+
+
+                
+                
+            </div>
+        </div>
+    
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script>
+            function animateAndRedirect(url) {
+                var button = document.querySelector('.rounded-box form button');
+                var container = document.querySelector('.container');
+                var roundedBox = document.querySelector('.rounded-box');
+
+                // Play the button press animation
+                button.style.animation = 'buttonPress 2s ease-in-out';
+
+                // Change the container and rounded-box opacity
+                container.style.opacity = 0;
+                roundedBox.style.transform = 'translateY(-50%)';
+
+                // After 1 seconds, redirect to the specified page
+                setTimeout(function () {
+                    window.location.href = url;
+                }, 1000);
+            }
+ 
+        </script>
+    </body>
+
+</html>
+
