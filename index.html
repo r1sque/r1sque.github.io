@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Perkocet - Personal Landing Page</title>
+        <title>Personal Landing Page</title>
        
         <style>
 
@@ -600,14 +600,11 @@
                 // Play the button press animation
                 button.style.animation = 'buttonPress 2s ease-in-out';
 
-                // Change the button text to
-                button.textContent = 'Preparing Transition...';
-
                 // Change the container and rounded-box opacity
                 container.style.opacity = 0;
                 roundedBox.style.transform = 'translateY(-50%)';
 
-                // After 1.5 seconds, redirect to the specified page
+                // After 1 seconds, redirect to the specified page
                 setTimeout(function () {
                     window.location.href = url;
                 }, 1000);
