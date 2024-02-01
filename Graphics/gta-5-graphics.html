@@ -25,7 +25,7 @@
         .container {
             font-family: 'Source Sans Pro', sans-serif;
             position: relative;
-            margin-left: -520px;
+            margin-left: -1030px;
             margin-bottom: 20px; /* Add margin for spacing */
         }
 
@@ -52,6 +52,31 @@
             margin-top: 15px;
             margin-right: 30px;
             cursor: pointer;
+        }
+
+        .rounded-box {
+            color: #1a1a1a;
+            border-radius: 65px;
+            background-color: #ffffff;
+            padding: 10px 30px; /* Add padding for better appearance */
+            margin-left: 65px;
+            cursor: pointer; /* Add cursor pointer for better interaction */
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, filter 0.3s;
+            
+        }
+
+        .rounded-box:hover{
+            background-color: #1a1a1a;
+            color: #ffffff;
+            transform: scale(1.2);
+            filter: brightness(1.5);
+        }
+
+        /* Style the "Main Page" text with the rounded box class */
+        nav li.main-page {
+            margin-top: 15px;
+            margin-right: 30px;
         }
 
         main {
@@ -120,7 +145,7 @@
     <header>
         <nav>
             <ul>
-                <li onclick="navigateTo('https://r1sque.github.io/')">Main Page</li>
+                <li class="main-page rounded-box" onclick="navigateTo('https://r1sque.github.io/')">Home</li>
             </ul>
         </nav>
     </header>
@@ -159,7 +184,7 @@
             <div class="box">
                 <a href="https://vrp.network/graphics/mods/projectv">
                     <img class="boximage" src="../Graphics/images/Redux/Redux Box.png" alt="Redux">
-                    <img class="boxlogo" style="height: 80px; width: 80x; transform: translate(-50%, -110%);" src="../Graphics/images/Redux/gta5_redux_logo.png" alt="Redux Logo">
+                    <img class="boxlogo" style="height: 70px; width: 80x; transform: translate(-50%, -130%);" src="../Graphics/images/Redux/gta5_redux_logo.png" alt="Redux Logo">
                 </a>
                 <p>
                     Redux
@@ -177,7 +202,7 @@
             <div class="box">
                 <a href="https://vrp.network/graphics/mods/projectv">
                     <img class="boximage" src="../Graphics/images/VisualV/VisualV Box.png" alt="Visual V">
-                    <img class="boxlogo" style="height: 20px; width: 100x; transform: translate(-50%, -110%);" src="../Graphics/images/VisualV/VisualV Logo.png" alt="Visual V Logo">
+                    <img class="boxlogo" style="height: 40px; width: 80x; transform: translate(-50%, -200%)" src="../Graphics/images/VisualV/VisualV Logo.png" alt="Visual V Logo">
                 </a>
                 <p>
                     Visual V
