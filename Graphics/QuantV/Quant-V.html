@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        @import url(https://db.onlinewebfonts.com/c/d03fdeed9cc2e75a1f2ccb658f1e836a?family=NudMotoyaExCedar+W6);
+        @import url(https://fonts.cdnfonts.com/css/helvetica-neue-55);
+        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+        body {
+            background-color: #1a1a1a;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: 10px;
+        }
+
+        nav ul {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: bold;
+            font-size: larger;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            position: fixed;
+            left: 50px;
+        }
+
+        nav li {
+            margin-top: 15px;
+            margin-right: 30px;
+            cursor: pointer;
+        }
+
+        .rounded-box {
+            color: #1a1a1a;
+            border-radius: 65px;
+            background-color: #ffffff;
+            padding: 10px 30px;
+            margin-left: 10px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        /* Hover styling for the rounded box */
+        .rounded-box:hover {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            transform: scale(1.2);
+            filter: brightness(1.5);
+        }
+
+        /* Style the "Home" and "Back" tabs with the common class */
+        nav li.main-page {
+            margin-top: 15px;
+            margin-right: 10px; /* Adjust margin for spacing between tabs */
+        }
+
+        main {
+            display: flex;
+            flex-direction: column; /* Stack the title, image, and text vertically */
+            align-items: center;
+            justify-content: flex-start; /* Align items to the start (top) of the container */
+            height: 100vh; /* Full height of the viewport */
+        }
+
+        .header-image {
+            max-width: 100%; /* Ensure the image doesn't exceed the container width */
+            margin-top: 50px; /* Adjust the margin as needed */
+        }
+
+        .main-box {
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 70px;
+            box-shadow: 0 0 15px rgba(193, 175, 128, 255);
+            width: calc(80% - 40px); /* Take the whole width of the page */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-y: auto; /* Add overflow-y property to enable vertical scrollbar */
+            max-height: calc(30vh - 80px); /* Set a maximum height for the main-box */
+        }
+
+        .main-box::-webkit-scrollbar {
+            width: 0; /* Set the width to 0 to hide the scrollbar */
+        }
+
+        /* Optionally, you can style the track and thumb even though they are hidden */
+        .main-box::-webkit-scrollbar-track {
+            background-color: transparent; /* Hide the scrollbar track */
+        }
+
+        .main-box::-webkit-scrollbar-thumb {
+            background-color: transparent; /* Hide the scrollbar thumb */
+        }
+
+        .box-title {
+            font-family: "NudMotoyaExCedar W6";
+            font-weight: 100;
+            left: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 0.5em #ffffff, 0 0 0.1em #8a2be2;
+            position: relative;
+        }
+
+        .box-title::after {
+            content: '';
+            position: absolute;
+            width: 43%;
+            height: 1px; /* Adjust the thickness of the underline as needed */
+            background-color: #ffffff;
+            bottom: -15px; /* Half of the height to center the underline */
+            left: 0;
+            border-radius: 5px; /* Adjust the border-radius to match the rounded corners of the main-box */
+            opacity: 0.5;
+        }
+
+        .box-paragraph {
+            max-height: 200px; /* Set a max height for the paragraph with a scrollbar if it exceeds */
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 10px;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .button {
+            margin-top: 60px;
+            margin-bottom: -40px; /* Add margin to the bottom for space between buttons */
+            margin-right: 50px;
+            padding: 10px 20px;
+            border-radius: 65px;
+            background-color: #ffffff;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(193, 175, 128, 255);
+            transition: background-color 0.3s, color 0.3s; /* Only transition background color and text color */
+        }
+
+        /* Hover styling for the button */
+        .button:hover {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            transform: none;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column; /* Change to column to stack buttons vertically */
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .content-container {
+            /* Container for all content inside main-box */
+            padding-bottom: 20px; /* Add padding to accommodate space for buttons or other content */
+        }
+        
+        .additional-content {
+            /* Styles for the content after the first paragraph */
+            margin-top: 20px;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        
+
+    </style>
+</head>
+
+<body>
+        <!--Black and Gold-->
+    <header>
+        <nav>
+            <ul>
+                <li class="main-page rounded-box" onclick="navigateTo('https://r1sque.github.io/')">Home</li>
+                <li class="main-page rounded-box" onclick="navigateTo('https://r1sque.github.io/Graphics/gta-5-graphics')">Back</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <img class="header-image" src="../images/Quant V/1687372330_croppedimg_629ecddbaa7a3-photoroom_png-photoroom.png" alt="Header Image">
+        <div class="main-box">
+            <div class="content-container">
+                <h1 class="box-title">Main Files - Quant V ver 2.1.4 (stable) <span class="material-symbols-outlined">star_rate</span></h1>
+                <div class="box-paragraph">
+                    <p>
+                        QuantV is a popular graphics mod for GTA 5 that enhances the game's visuals,<br>
+                        making it look even more realistic. QuantV 2.1.4 is fully compatible, so you <br>
+                        can enjoy the improved graphics while playing with others online. <br>
+                        Just make sure to follow the mod installation instructions  <br>
+                        carefully to ensure it works properly especially with ENB.
+                    </p>
+                </div>
+                <div class="buttons-container">
+                    <div class="rounded-box button">Download From Google Drive</div>
+                    <div class="rounded-box button">&nbsp;&nbsp;&nbsp;&nbsp;Download From GoFile&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                </div>
+                <br>
+                <!-- Additional content -->
+                <div class="additional-content">
+                    <h1 class="box-title">Main Files - Quant V ver 3.0 (limited) <span class="material-symbols-outlined">star_rate</span></h1>
+                    <div class="box-paragraph">
+                        <p>
+                            QuantV is a popular graphics mod for GTA 5 that enhances the game's visuals,<br>
+                            making it look even more realistic. QuantV 2.1.4 is fully compatible, so you <br>
+                            can enjoy the improved graphics while playing with others online. <br>
+                            Just make sure to follow the mod installation instructions  <br>
+                            carefully to ensure it works properly especially with ENB.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+
+    </script>
+
+</body>
+
+</html>
