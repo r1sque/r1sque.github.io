@@ -21,12 +21,25 @@
             right: 0;
             padding: 10px;
         }
+        main {
+            display: flex;
+            flex-direction: column; /* Keep the main content in a column */
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        .content-wrapper {
+            display: flex; /* Make the container and the image appear in a row */
+            align-items: center;
+        }
 
         .container {
             font-family: 'Source Sans Pro', sans-serif;
             position: relative;
-            margin-left: -1030px;
+            margin-left: -280px;
             margin-bottom: 20px; /* Add margin for spacing */
+            margin-right: 500px;
         }
 
         .container h1 {
@@ -79,14 +92,6 @@
             margin-right: 30px;
         }
 
-        main {
-            display: flex;
-            flex-direction: column; /* Stack the title and text vertically */
-            align-items: center;
-            justify-content: center; /* Center vertically */
-            height: 100vh; /* Full height of the viewport */
-        }
-
         .box-container {
             display: flex; /* Set the box container to flex */
             justify-content: center; /* Center the boxes horizontally */
@@ -137,6 +142,9 @@
             transform: scale(1.2);
             filter: brightness(1.5);
         }
+        .gif {
+            max-width: 100%; /* Make sure the image doesn't exceed its container */
+        }
     </style>
 </head>
 
@@ -152,16 +160,19 @@
 
     <main>
 
-        <div class="container">
-            <h1>Graphics Modifications Online</h1>
-            <p>
-                Enjoy realistic graphics while playing GTA 5 online. <br>
-                I am sharing my collection of top graphics mods offering redesigned lighting, weather, color correction, <br>
-                as well as ENB effects and other improvements.
-            </p>
-        </div>
+        <div class="content-wrapper">
+            <div class="container">
+                <h1>Graphics Modifications Online</h1>
+                <p>
+                    Enjoy realistic graphics while playing GTA 5 online. <br>
+                    I am sharing my collection of top graphics mods offering redesigned lighting, weather, color correction, <br>
+                    as well as ENB effects and other improvements.
+                </p>
+            </div>
 
-        <!-- QUANT V / NaturalVision / Redux / AliV2 / VisualV / Misc (other mods that arent full on graphics mod)-->
+            <img src="../cat.gif" alt="infinite cat splitting" width="250" />
+        </div>
+        <!-- QUANT V / NaturalVision / Redux / AliV2 / VisualV / Misc (other mods that arent full on graphics mod) -->
         <div class="box-container">
             <div class="box">
                 <a href="https://vrp.network/graphics/mods/projectv">
