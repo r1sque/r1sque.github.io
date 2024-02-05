@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        @import url(https://db.onlinewebfonts.com/c/d03fdeed9cc2e75a1f2ccb658f1e836a?family=NudMotoyaExCedar+W6);
         @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+        @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400);
         body {
             background-color: #1a1a1a;
             margin: 0;
@@ -44,8 +44,8 @@
 
         .container h1 {
             text-shadow: 0 0 5em #ffffff, 0 0 0.2em #ffffff;
-            font-family: "NudMotoyaExCedar W6";
-            font-weight: 100;
+            font-family: "Montserrat";
+            font-weight: bolder;
             font-size: 40px;
         }
 
@@ -144,6 +144,31 @@
         }
         .gif {
             max-width: 100%; /* Make sure the image doesn't exceed its container */
+        }
+
+        body::-webkit-scrollbar {
+            width: 8px; /* Set the width of the scrollbar */
+            margin-right: -50px; /* Move the scrollbar to the left by 50px */
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #b3b3b3; /* Color of the scrollbar thumb */
+            border-radius: 5px; /* Radius of the scrollbar thumb */
+        }
+
+        body::-webkit-scrollbar-track {
+            background-color: #333; /* Color of the scrollbar track */
+            border-radius: 50px; /* Radius of the scrollbar thumb */
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background-color:  #ffffff; /* Hover color of the scrollbar thumb */
+            
+        }
+
+        @media (max-width: 1738px) {
+                
+                
         }
     </style>
 </head>
