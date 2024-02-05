@@ -246,7 +246,7 @@
                 transition: transform 1s ease;
                 display: flex; /* Use flexbox to arrange child elements */
                 flex-wrap: wrap; /* Allow wrapping to the next line */
-                animation: 1.5s ease-out 0s 1 slideInUp;
+                animation: 1s ease-out 0s 1 slideInUp;
             }
 
             @keyframes fadeIn {
@@ -598,16 +598,16 @@
                 var roundedBox = document.querySelector('.rounded-box');
 
                 // Play the button press animation
-                button.style.animation = 'buttonPress 2s ease-in-out';
+                button.style.animation = 'buttonPress 0.5s ease-in-out';
 
                 // Change the container and rounded-box opacity
                 container.style.opacity = 0;
                 roundedBox.style.transform = 'translateY(-50%)';
 
-                // After 1 seconds, redirect to the specified page
+                // After 0.5 seconds, redirect to the specified page
                 setTimeout(function () {
                     window.location.href = url;
-                }, 1000);
+                }, 500);
             }
  
         </script>
