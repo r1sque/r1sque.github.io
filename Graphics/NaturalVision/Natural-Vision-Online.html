@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        @import url(https://fonts.cdnfonts.com/css/helvetica-neue-55);
+        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+        @import "bourbon";
+        @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400);
+        /* colors */
+        /* tab setting */
+        /* breakpoints */
+        /* selectors relative to radio inputs */
+        .bg-image {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            z-index: -1;
+            filter: blur(5px);
+            transform: translate(0, -16px);
+        }
+        .header-image {
+            max-width: 100%;
+            height: 150px;
+            margin-top: -40px; /* Adjusted margin to move the image down by 20 pixels */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        body {
+            background-color: #1a1a1a;
+            color: #333;
+            font-family: "Raleway";
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .tabs {
+            left: 50%;
+            transform: translateX(-50%);
+            position: relative;
+            padding: 20px;
+            padding-bottom: 50px;
+            margin-top: 70px;
+            width: 70%;
+            height: 250px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+            border-radius: 5px;
+            min-width: 240px;
+            backdrop-filter: blur(15px);
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+        .tabs input[name="tab-control"] {
+            display: none;
+        }
+        .tabs .content section h2, .tabs ul li label {
+            font-family: "Montserrat";
+            font-weight: bold;
+            font-size: 18px;
+            color: #bb8eff;
+        }
+        .tabs ul {
+            list-style-type: none;
+            padding-left: 0;
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+        .tabs ul li {
+            box-sizing: border-box;
+            flex: 1;
+            width: 25%;
+            padding: 0 10px;
+            text-align: center;
+        }
+        .tabs ul li label {
+            transition: all 0.3s ease-in-out;
+            color: #dfdfdf;
+            padding: 5px auto;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            white-space: nowrap;
+            -webkit-touch-callout: none;
+        }
+        .tabs ul li label br {
+            display: none;
+        }
+        .tabs ul li label svg {
+            fill: #dfdfdf;
+            height: 1.2em;
+            vertical-align: bottom;
+            margin-right: 0.2em;
+            transition: all 0.2s ease-in-out;
+        }
+        .tabs ul li label:hover, .tabs ul li label:focus, .tabs ul li label:active {
+            outline: 0;
+            color: #f3f3f3;
+        }
+        .tabs ul li label:hover svg, .tabs ul li label:focus svg, .tabs ul li label:active svg {
+            fill: #f3f3f3;
+        }
+        .tabs .slider {
+            position: relative;
+            width: 450px;
+            transition: all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07);
+        }
+        .tabs .slider .indicator {
+            position: relative;
+            width: 250px;
+            max-width: 100%;
+            margin: 0 auto;
+            height: 4px;
+            background: linear-gradient(90deg, #679CFF 0%, #FF6EE7 100%);
+            border-radius: 1px;
+        }
+        .tabs .content {
+            margin-top: 30px;
+        }
+        .tabs .content section {
+            display: none;
+            animation-name: content;
+            animation-direction: normal;
+            animation-duration: 0.3s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: 1;
+            line-height: 1.4;
+        }
+        .tabs .content section h2 {
+            color: linear-gradient(90deg, #679CFF 0%, #FF6EE7 100%);
+            display: none;
+        }
+        .tabs .content section h2::after {
+            content: "";
+            position: relative;
+            display: block;
+            width: 30px;
+            height: 3px;
+            background: linear-gradient(90deg, #679CFF 0%, #FF6EE7 100%);
+            margin-top: 5px;
+            left: 1px;
+        }
+        .tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label {
+            cursor: default;
+            color: #bb8eff;
+        }
+        .tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label svg {
+            fill: #bb8eff;
+        }
+        @media (max-width: 600px) {
+            .tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label {
+                background: rgba(0, 0, 0, 0.08);
+            }
+        }
+        .tabs input[name="tab-control"]:nth-of-type(1):checked ~ .slider {
+            transform: translateX(0%);
+        }
+        .tabs input[name="tab-control"]:nth-of-type(1):checked ~ .content > section:nth-child(1) {
+            display: block;
+        }
+        .tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label {
+            cursor: default;
+            color: #bb8eff;
+        }
+        .tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label svg {
+            fill: #bb8eff;
+        }
+        @media (max-width: 600px) {
+            .tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label {
+                background: rgba(0, 0, 0, 0.08);
+            }
+        }
+        .tabs input[name="tab-control"]:nth-of-type(2):checked ~ .slider {
+            transform: translateX(100%);
+        }
+        .tabs input[name="tab-control"]:nth-of-type(2):checked ~ .content > section:nth-child(2) {
+            display: block;
+        }
+        .tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
+            cursor: default;
+            color: #bb8eff;
+        }
+        .tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label svg {
+            fill: #bb8eff;
+        }
+        @media (max-width: 600px) {
+            .tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
+                background: rgba(0, 0, 0, 0.08);
+            }
+        }
+        .tabs input[name="tab-control"]:nth-of-type(3):checked ~ .slider {
+            transform: translateX(200%);
+        }
+        .tabs input[name="tab-control"]:nth-of-type(3):checked ~ .content > section:nth-child(3) {
+            display: block;
+        }
+        .tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label {
+            cursor: default;
+            color: #bb8eff;
+        }
+        .tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label svg {
+            fill: #bb8eff;
+        }
+        @media (max-width: 600px) {
+            .tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label {
+                background: rgba(0, 0, 0, 0.08);
+            }
+        }
+        .tabs input[name="tab-control"]:nth-of-type(4):checked ~ .slider {
+            transform: translateX(300%);
+        }
+        .tabs input[name="tab-control"]:nth-of-type(4):checked ~ .content > section:nth-child(4) {
+            display: block;
+        }
+        @keyframes content {
+            from {
+                opacity: 0;
+                transform: translateY(5%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0%);
+            }
+        }
+        @media (max-width: 1000px) {
+            .tabs ul li label {
+                white-space: initial;
+            }
+            .tabs ul li label br {
+                display: initial;
+            }
+            .tabs ul li label svg {
+                height: 1.5em;
+            }
+        }
+        @media (max-width: 600px) {
+            .tabs ul li label {
+                padding: 5px;
+                border-radius: 5px;
+            }
+            .tabs ul li label span {
+                display: none;
+            }
+            .tabs .slider {
+                display: none;
+            }
+            .tabs .content {
+                margin-top: 20px;
+            }
+            .tabs .content section h2 {
+                display: block;
+            }
+        }
+
+        body::-webkit-scrollbar {
+            width: 8px; /* Set the width of the scrollbar */
+            margin-right: -50px; /* Move the scrollbar to the left by 50px */
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #bb8eff; /* Color of the scrollbar thumb */
+            border-radius: 5px; /* Radius of the scrollbar thumb */
+        }
+
+        body::-webkit-scrollbar-track {
+            background-color: #333; /* Color of the scrollbar track */
+            border-radius: 50px; /* Radius of the scrollbar thumb */
+        }
+
+        .content p {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: white;
+            margin-left: 10px;
+            font-size: large;
+        }
+        .content h1 {
+            color: white;
+            font-family: "Montserrat";
+            font-weight: 100;
+            font-size: 30px;
+            left: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 0.5em #ffffff, 0 0 0.1em #ffffff;
+            position: relative;
+        }
+        .content h1::after{
+            content: '';
+            position: absolute;
+            width: 47%;
+            height: 1px; /* Adjust the thickness of the underline as needed */
+            background-color: #ffffff;
+            bottom: -5px; /* Half of the height to center the underline */
+            left: 0;
+            border-radius: 5px; /* Adjust the border-radius to match the rounded corners of the main-box */
+            opacity: 0.5;
+        }
+        .top-tabs {
+            color: #ffffff;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            list-style: none;
+            margin-left: 10px;
+            margin-right: 30px;
+            margin-top: 20px;
+            position: relative;
+            transition: transform 0.3s, filter 0.3s;
+        }
+        .top-tabs:hover {
+            color: #bb8eff;
+            transform: scale(1.1);
+            
+        }
+        .top-tabs:hover::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px; /* Adjust the thickness of the underline as needed */
+            background-color: #ffffff;
+            bottom: -5px; /* Half of the height to center the underline */
+            left: 0;
+            border-radius: 5px; /* Adjust the border-radius to match the rounded corners of the main-box */
+            opacity: 1;
+        }
+
+        .download-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            transform: translate(0, -120%);
+        }
+        .DLbutton {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /*or font-family: "Montserrat";*/
+            background-color: #ffffff;
+            color: #1a1a1a;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 25px;
+            cursor: pointer;
+            box-shadow: 0 0 15px #cdacff;
+            transition: background-color 0.3s, color 0.3s; /* Only transition background color and text color */
+        }
+        .DLbutton:hover{
+            background-color: #cdacff;
+
+        }
+
+        .addons-button {
+            font-size: 20px;
+            color: #ffffff;
+            font-weight: bold;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: transform 0.3s, filter 0.3s;
+        }
+        .addons-button:hover {
+            color: #cdacff;
+            transform: scale(1.1);
+        }
+
+        .addons-tabs { /* Add styles for the duplicated tabs container here */
+            padding-top: 10px;
+            padding-bottom: 25px;
+            backdrop-filter: blur(15px);
+        }
+        .addons-tabs .slider .indicator {
+            width: 700px;
+            max-width: 100%;
+            margin: 0 auto;
+            left: 450px;
+            height: 4px;
+            background: linear-gradient(90deg, #679CFF 0%, #FF6EE7 100%);
+            border-radius: 1px;
+        }
+        .addons-tabs .content section {
+            display: flex;
+            flex-direction: column; /* Change to column layout */
+            text-align: center;
+        }
+
+        .addons-tabs .content p {
+            margin-top: 0px;
+            font-size: larger;
+        }
+
+        .addons-tabs .content .download-buttons {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center; /* Center the buttons horizontally */
+            margin-top: 70px;
+        }
+
+        .addons-tabs .content .DLbutton {
+            margin: 0 10px; /* Add margin between buttons */
+        }
+
+        #showAddonsButton {
+            font-size: 18px;
+            background-color: transparent;
+            color: white;
+            transform: translate(220%, 30px);
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-bottom: -10px;
+            transition: background-color 0.3s;
+        }
+        #showAddonsButton:hover {
+            color: #bb8eff;
+        }
+        #showAddonsButton span .material-symbols-outlined {
+            transition: transform 0.3s;
+        }
+
+        #showAddonsButton.down span .material-symbols-outlined {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <img class="bg-image" src="../images/NaturalVision/GTA-5-Mod-graphique-NaturalVision-Evolved-Image-11-1280p-x-720p-Qualite-80-Picture-by-Razed.jpg" alt="cool">
+    <header>
+        <nav>
+            <ul>
+                <li class="top-tabs" onclick="navigateTo('https://r1sque.github.io/')">Home</li>
+                <li class="top-tabs" onclick="openInNewTab('https://www.razedmods.com')">Original Mod Page</li>
+                <li class="top-tabs" onclick="navigateTo('https://r1sque.github.io/Graphics/gta-5-graphics')">Back</li>
+            </ul>
+        </nav>
+    </header>
+
+    <img class="header-image" src="../images/NaturalVision/NaturalVision logo.png" alt="Header Image">
+    <div class="tabs">
+        <input type="radio" id="tab1" name="tab-control" checked>
+        <input type="radio" id="tab2" name="tab-control">
+        <input type="radio" id="tab3" name="tab-control">
+
+        <ul>
+            <li>
+                <label for="tab1">Natural Vision Paid SP ver</label>
+            </li>
+            <li>
+                <label for="tab2">Natural Vision ver 3.6</label>
+            </li>
+            <li>
+                <label for="tab3">Natural Vision ver 2.0</label>
+            </li>
+        </ul>
+
+        <div class="slider">
+            <div class="indicator"></div>
+        </div>
+
+        <div class="content">
+            <section>
+                <!-- QuantV is a popular graphics mod for GTA 5 that enhances the game's visuals,<br> making it look even more realistic. -->
+                <h1>Main Files - Natural Vision ver 16/12 (Leak)<span class="material-symbols-outlined">star_rate</span></h1>
+                <p> This version of Natural Vision is the leaked paid SP version, it is much heavier and has its own set of <br>
+                    addons that can be download together. Make sure your PC is good enough (at least RTX-3070) to <br>
+                    run the graphics mod smoothly while playing with others online. Just make sure to follow the <br>
+                    mod installation instructions carefully to ensure it works properly with ENB or Reshade. <br>
+                    <b style="font-family: Montserrat";><u>ENB is mendatory to run the graphics mod correctly</u></b>
+                </p>
+                <div class="download-buttons">
+                    <div class="DLbutton" onclick="openInNewTab('https://pastebin.com/giNVPNXA')">&nbsp;&nbsp;&nbsp;&nbsp;How To Install For Online&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="DLbutton" onclick="openInNewTab('https://drive.google.com/file/d/1903j2Zn_pgv5B1bFYp_DIDRT5Vl9GH7P/view')">Download From Google Drive</div>
+                </div>
+            </section>
+
+            <section>
+                <!-- QuantV is a popular graphics mod for GTA 5 that enhances the game's visuals,<br> making it look even more realistic. -->
+                <h1>Main Files - Natural Vision ver 3.6 (stable) <span class="material-symbols-outlined">star_rate</span></h1>
+                <p> Natural Vision Online ver 3.6 is the updated version of NVO 2.0, it is heavier and has its own set<br>
+                    of addons that can be downloaded below. Make sure your PC is good enough (at least RTX-3060) to <br>
+                    run the graphics mod smoothly while playing with others online. Just make sure to follow the <br>
+                    mod installation instructions carefully to ensure it works properly with ENB or Reshade. <br>
+                    <b style="font-family: Montserrat";><u>ENB is mendatory to run the graphics mod correctly</u></b>
+                </p>
+                <div class="download-buttons">
+                    <div class="DLbutton" onclick="openInNewTab('https://drive.google.com/file/d/15ZHUNHE3dnhQM6Evs29ok-nhmJxwnjNt/view?usp=sharing')">Download From Google Drive</div>
+                    <div class="DLbutton" onclick="openInNewTab('https://gofile.io/d/3Jb53A')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Download From GoFile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                </div>
+            </section>
+
+            <section>
+                <h1>Main Files - Natural Vision ver 2.0 (stable) <span class="material-symbols-outlined">star_rate</span></h1>
+                <p> <!-- text to be changed -->
+                    Natural Vision Online ver 2.0 is the lightweight version of NVO 3.6, it is much lighter and has its own set<br>
+                    of addons that can be downloaded below. Make sure your PC is good enough (at least RTX-2070) to <br>
+                    run the graphics mod smoothly while playing with others online. Just make sure to follow the <br>
+                    mod installation instructions carefully to ensure it works properly with ENB or Reshade. <br>
+                    <b style="font-family: Montserrat";><u>ENB is mendatory to run the graphics mod correctly</u></b>
+                </p>
+                <div class="download-buttons">
+                    <div class="DLbutton" onclick="openInNewTab('https://drive.google.com/drive/folders/1J1sRbfFsN4XvTN4HsfEHbJRexV4wbY06?usp=sharing')">Download From Google Drive</div>
+                    <div class="DLbutton" onclick="openInNewTab('https://gofile.io/d/TqESFz')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Download From GoFile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <button id="showAddonsButton" onclick="toggleAddons()" class="up">
+        <span style="display: flex; align-items: center;">
+            Show Addons
+            <span class="material-symbols-outlined" style="rotate: 180deg;">expand_more</span>
+        </span>
+    </button> 
+    <div class="addons-tabs tabs" id="addonsTabs" style="display: none;">
+        <ul>
+            <li>
+                <label for="addonTab1" style="color: #bb8eff">Addons For Natural Vision ver 3.6 & 2.0</label>
+            </li>
+        </ul>
+
+        <div class="slider">
+            <div class="indicator"></div>
+        </div>
+
+        <div class="content">
+            <section>
+                <p>
+                    These add-ons have been tested on Natural Vision ver 3.6 & 2.0 and are mostly stable. <br>
+                    Be careful when installing these addons as some them are Reshade/ENB modifications and others can break the graphics mod if not installed correctly. <br>
+                    Furthermore some addons can give online access issues and need to be paired with stand "Fix hashes assets" to work in online.
+                </p>
+                <div class="download-buttons">
+                    <div class="DLbutton" onclick="openInNewTab('https://drive.google.com/file/d/1LCnmgaYZPrVMNQzEj6qfB4cFvCqmbejR/view?usp=sharing')">Addons For Natural Vision ver 3.6</div>
+                    <div class="DLbutton" onclick="openInNewTab('https://drive.google.com/drive/folders/1ARUP5PgBzHfCQANQhKQmSu1TuHcleQDx?usp=sharing')">Addons For Natural Vision ver 2.0</div>
+                </div>
+            </section>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+
+    <script>
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+
+        function openInNewTab(url) {
+            window.open(url, '_blank');
+        }
+
+        function toggleAddons() {
+            var addonsTabs = document.getElementById("addonsTabs");
+            var showAddonsButton = document.getElementById("showAddonsButton");
+            var targetElement = document.querySelector('.tabs');
+
+            var start = window.scrollY || document.documentElement.scrollTop;
+            var end = targetElement.offsetTop;
+            var duration = 1300; // Adjust the duration as needed
+
+            var startTime;
+
+            function scrollAnimation(currentTime) {
+                if (!startTime) startTime = currentTime;
+
+                var timeElapsed = currentTime - startTime;
+                var progress = Math.min(timeElapsed / duration, 1);
+                var easeInOutCubic = progress < 0.5 ? 4 * progress ** 3 : (progress - 1) * (2 * progress - 2) * (2 * progress - 2) + 1;
+                var scrollTo = start + (end - start) * easeInOutCubic;
+
+                window.scrollTo(0, scrollTo);
+
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(scrollAnimation);
+                }
+            }
+            
+
+            if (addonsTabs.style.display === 'none' || addonsTabs.style.display === '') {
+                // Show addons
+                addonsTabs.style.display = 'block';
+                showAddonsButton.classList.add('down');
+                requestAnimationFrame(scrollAnimation);
+            } else {
+                // Hide addons
+                start = window.scrollY || document.documentElement.scrollTop;
+                end = start - targetElement.offsetHeight; // Adjust this value as needed
+                startTime = null;
+
+                function hideAnimation(currentTime) {
+                    if (!startTime) startTime = currentTime;
+
+                    var timeElapsed = currentTime - startTime;
+                    var progress = Math.min(timeElapsed / duration, 1);
+                    var easeInOutCubic = progress < 0.5 ? 4 * progress ** 3 : (progress - 1) * (2 * progress - 2) * (2 * progress - 2) + 1;
+                    var scrollTo = start + (end - start) * easeInOutCubic;
+
+                    window.scrollTo(0, scrollTo);
+
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(hideAnimation);
+                    } else { 
+                        setTimeout(function () {
+                            addonsTabs.style.display = 'none';
+                            showAddonsButton.classList.remove('down');
+                        }, 100);
+
+                    }
+                }
+
+                requestAnimationFrame(hideAnimation);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
