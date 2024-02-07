@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        @import url(https://fonts.cdnfonts.com/css/helvetica-neue-55);
+        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+        @import "bourbon";
+        @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400);
+        /* colors */
+        /* tab setting */
+        /* breakpoints */
+        /* selectors relative to radio inputs */
+        html {
+            width: 100%;
+            height: 95%;
+            background-color: #1a1a1a;
+        }
+        .header-image {
+            max-width: 100%;
+            margin-top: -40px; /* Adjusted margin to move the image down by 20 pixels */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        body {
+            background-color: #1a1a1a;
+            color: #333;
+            font-family: "Raleway";
+            height: 100%;
+        }
+        .tabs {
+            left: 50%;
+            transform: translateX(-50%);
+            position: relative;
+            background-color: #1a1a1a;
+            padding: 20px;
+            padding-bottom: 50px;
+            margin-top: 70px;
+            width: 70%;
+            height: 250px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+            border-radius: 5px;
+            min-width: 240px;
+        }
+        .tabs input[name="tab-control"] {
+            display: none;
+        }
+        .tabs .content section h2, .tabs ul li label {
+            font-family: "Montserrat";
+            font-weight: bold;
+            font-size: 18px;
+            color: #9590ff;
+        }
+        .tabs ul {
+            list-style-type: none;
+            padding-left: 0;
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+        .tabs ul li {
+            box-sizing: border-box;
+            flex: 1;
+            width: 25%;
+            padding: 0 10px;
+            text-align: center;
+        }
+        .tabs ul li label {
+            transition: all 0.3s ease-in-out;
+            color: #929daf;
+            padding: 5px auto;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            white-space: nowrap;
+            -webkit-touch-callout: none;
+        }
+        .tabs ul li label br {
+            display: none;
+        }
+        .tabs ul li label svg {
+            fill: #929daf;
+            height: 1.2em;
+            vertical-align: bottom;
+            margin-right: 0.2em;
+            transition: all 0.2s ease-in-out;
+        }
+        .tabs ul li label:hover, .tabs ul li label:focus, .tabs ul li label:active {
+            outline: 0;
+            color: #bec5cf;
+        }
+        .tabs ul li label:hover svg, .tabs ul li label:focus svg, .tabs ul li label:active svg {
+            fill: #bec5cf;
+        }
+        .tabs .slider {
+            position: relative;
+            width: 50%;
+            transition: all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07);
+        }
+        .tabs .slider .indicator {
+            position: relative;
+            width: 450px;
+            max-width: 100%;
+            margin: 0 auto;
+            height: 4px;
+            background: #9590ff;
+            border-radius: 1px;
+        }
+        .tabs .content {
+            margin-top: 30px;
+        }
+        .tabs .content section {
+            display: none;
+            animation-name: content;
+            animation-direction: normal;
+            animation-duration: 0.3s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: 1;
+            line-height: 1.4;
+        }
+        .tabs .content section h2 {
+            color: #9590ff;
+            display: none;
+        }
+        .tabs .content section h2::after {
+            content: "";
+            position: relative;
+            display: block;
+            width: 30px;
+            height: 3px;
+            background: #9590ff;
+            margin-top: 5px;
+            left: 1px;
+        }
+        .tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label {
+            cursor: default;
+            color: #9590ff;
+        }
+        .tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label svg {
+            fill: #9590ff;
+        }
+        @media (max-width: 600px) {
+            .tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label {
+                background: rgba(0, 0, 0, 0.08);
+            }
+        }
+        .tabs input[name="tab-control"]:nth-of-type(1):checked ~ .slider {
+            transform: translateX(0%);
+        }
+        .tabs input[name="tab-control"]:nth-of-type(1):checked ~ .content > section:nth-child(1) {
+            display: block;
+        }
+        .tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label {
+            cursor: default;
+            color: #9590ff;
+        }
+        .tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label svg {
+            fill: #9590ff;
+        }
+        @media (max-width: 600px) {
+            .tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label {
+                background: rgba(0, 0, 0, 0.08);
+            }
+        }
+        .tabs input[name="tab-control"]:nth-of-type(2):checked ~ .slider {
+            transform: translateX(100%);
+        }
+        .tabs input[name="tab-control"]:nth-of-type(2):checked ~ .content > section:nth-child(2) {
+            display: block;
+        }
+        .tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
+            cursor: default;
+            color: #9590ff;
+        }
+        .tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label svg {
+            fill: #9590ff;
+        }
+        @media (max-width: 600px) {
+            .tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
+                background: rgba(0, 0, 0, 0.08);
+            }
+        }
+        .tabs input[name="tab-control"]:nth-of-type(3):checked ~ .slider {
+            transform: translateX(200%);
+        }
+        .tabs input[name="tab-control"]:nth-of-type(3):checked ~ .content > section:nth-child(3) {
+            display: block;
+        }
+        .tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label {
+            cursor: default;
+            color: #9590ff;
+        }
+        .tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label svg {
+            fill: #9590ff;
+        }
+        @media (max-width: 600px) {
+            .tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label {
+                background: rgba(0, 0, 0, 0.08);
+            }
+        }
+        .tabs input[name="tab-control"]:nth-of-type(4):checked ~ .slider {
+            transform: translateX(300%);
+        }
+        .tabs input[name="tab-control"]:nth-of-type(4):checked ~ .content > section:nth-child(4) {
+            display: block;
+        }
+        @keyframes content {
+            from {
+                opacity: 0;
+                transform: translateY(5%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0%);
+            }
+        }
+        @media (max-width: 1000px) {
+            .tabs ul li label {
+                white-space: initial;
+            }
+            .tabs ul li label br {
+                display: initial;
+            }
+            .tabs ul li label svg {
+                height: 1.5em;
+            }
+        }
+        @media (max-width: 600px) {
+            .tabs ul li label {
+                padding: 5px;
+                border-radius: 5px;
+            }
+            .tabs ul li label span {
+                display: none;
+            }
+            .tabs .slider {
+                display: none;
+            }
+            .tabs .content {
+                margin-top: 20px;
+            }
+            .tabs .content section h2 {
+                display: block;
+            }
+        }
+
+        body::-webkit-scrollbar {
+            width: 8px; /* Set the width of the scrollbar */
+            margin-right: -50px; /* Move the scrollbar to the left by 50px */
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #9590ff; /* Color of the scrollbar thumb */
+            border-radius: 5px; /* Radius of the scrollbar thumb */
+        }
+
+        body::-webkit-scrollbar-track {
+            background-color: #333; /* Color of the scrollbar track */
+            border-radius: 50px; /* Radius of the scrollbar thumb */
+        }
+
+        .content p {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: white;
+            margin-left: 10px;
+            font-size: large;
+        }
+        .content h1 {
+            color: white;
+            font-family: "Montserrat";
+            font-weight: 100;
+            font-size: 30px;
+            left: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 0.5em #ffffff, 0 0 0.1em #ffffff;
+            position: relative;
+        }
+        .content h1::after{
+            content: '';
+            position: absolute;
+            width: 32%;
+            height: 1px; /* Adjust the thickness of the underline as needed */
+            background-color: #ffffff;
+            bottom: -5px; /* Half of the height to center the underline */
+            left: 0;
+            border-radius: 5px; /* Adjust the border-radius to match the rounded corners of the main-box */
+            opacity: 0.5;
+        }
+        .top-tabs {
+            color: #ffffff;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            list-style: none;
+            margin-left: 10px;
+            margin-right: 30px;
+            margin-top: 20px;
+            position: relative;
+            transition: transform 0.3s, filter 0.3s;
+        }
+        .top-tabs:hover {
+            color: #c3c0ff;
+            transform: scale(1.1);
+            
+        }
+        .top-tabs:hover::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px; /* Adjust the thickness of the underline as needed */
+            background-color: #ffffff;
+            bottom: -5px; /* Half of the height to center the underline */
+            left: 0;
+            border-radius: 5px; /* Adjust the border-radius to match the rounded corners of the main-box */
+            opacity: 1;
+        }
+
+        .download-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            transform: translate(0, -120%);
+        }
+        .DLbutton {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /*or font-family: "Montserrat";*/
+            background-color: #ffffff;
+            color: #1a1a1a;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 25px;
+            cursor: pointer;
+            box-shadow: 0 0 15px #9590ff;
+            transition: background-color 0.3s, color 0.3s; /* Only transition background color and text color */
+        }
+        .DLbutton:hover{
+            background-color: #c3c0ff;
+
+        }
+
+        .addons-button {
+            font-size: 20px;
+            color: #ffffff;
+            font-weight: bold;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: transform 0.3s, filter 0.3s;
+        }
+        .addons-button:hover {
+            color: #c3c0ff;
+            transform: scale(1.1);
+        }
+
+        .addons-tabs { /* Add styles for the duplicated tabs container here */
+            padding-top: 10px;
+            padding-bottom: 25px;
+        }
+        .addons-tabs .slider .indicator {
+            width: 700px;
+            max-width: 100%;
+            margin: 0 auto;
+            left: 330px;
+            height: 4px;
+            background: #9590ff;
+            border-radius: 1px;
+        }
+        .addons-tabs .content section {
+            display: flex;
+            flex-direction: column; /* Change to column layout */
+            text-align: center;
+        }
+
+        .addons-tabs .content p {
+            margin-top: 0px;
+            font-size: larger;
+        }
+        .addons-tabs .content h3 {
+            font-family: "Montserrat";
+            color: #ffffff;
+            transform: translate(0, 10px);
+        }
+
+        .addons-tabs .content .download-buttons {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center; /* Center the buttons horizontally */
+            margin-top: 70px;
+        }
+
+        .addons-tabs .content .DLbutton {
+            margin: 0 10px; /* Add margin between buttons */
+        }
+
+        #showAddonsButton {
+            font-size: 18px;
+            background-color: transparent;
+            color: white;
+            transform: translate(220%, 30px);
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-bottom: -10px;
+            transition: background-color 0.3s;
+        }
+        #showAddonsButton:hover {
+            color: #9590ff;
+        }
+        #showAddonsButton span .material-symbols-outlined {
+            transition: transform 0.3s;
+        }
+
+        #showAddonsButton.down span .material-symbols-outlined {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="top-tabs" onclick="navigateTo('https://r1sque.github.io/')">Home</li>
+                <li class="top-tabs" onclick="openInNewTab('https://www.patreon.com/QuantV')">Original Mod Page</li>
+                <li class="top-tabs" onclick="navigateTo('https://r1sque.github.io/Graphics/gta-5-graphics')">Back</li>
+                <!-- make tutorial tab button when not lazy -->
+            </ul>
+        </nav>
+    </header>
+
+    <img class="header-image" src="../images/AliV2/AliV2 Logo.png" alt="Header Image">
+    <div class="tabs">
+        <input type="radio" id="tab1" name="tab-control" checked>
+        <input type="radio" id="tab2" name="tab-control">
+
+        <ul>
+            <li>
+                <label for="tab1">Ali V 2.0</label>
+            </li>
+            <li>
+                <label for="tab2">Ali V 1.1</label>
+            </li>
+        </ul>
+
+        <div class="slider">
+            <div class="indicator"></div>
+        </div>
+
+        <div class="content">
+            <section>
+                <!-- QuantV is a popular graphics mod for GTA 5 that enhances the game's visuals,<br> making it look even more realistic. -->
+                <h1>Main Files - Ali V 2.0 (stable) <span class="material-symbols-outlined">star_rate</span></h1>
+                <p> Ali V 2.0 is a graphics mod that aim to combine amazing look without custom files <br>
+                    and optimization which it excels at both. Ali V 2.0 is a direct upgrade to Ali V 1.1 as <br>
+                    it improves all the aspects of it. Just make sure to follow the mod installation <br>
+                    instructions carefully to ensure it works properly especially with ENB.
+                </p>
+                <div class="download-buttons">
+                    <div class="DLbutton" onclick="openInNewTab('https://drive.google.com/file/d/1OTQR4NPgvXl10wKq5gg3gmInCIi9acpG/view?usp=sharing')">Download From Google Drive</div>
+                    <div class="DLbutton" onclick="openInNewTab('https://gofile.io/d/4FAMnf')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Download From GoFile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                </div>
+            </section>
+
+            <section>
+                <h1>Main Files - Ali V 1.1 (stable) <span class="material-symbols-outlined">star_rate</span></h1>
+                <p> <!-- text to be changed -->
+                    Ali V 1.1 is a graphics mod that aim to combine good look with a very good optimization. <br>
+                    Ali V 1.1 is an ealier version of Ali-V, it offers good visuals and good optimization for<br>
+                    lower performing hardwares. Just make sure to follow the mod installation<br>
+                    instructions carefully to ensure it works properly especially with ENB.
+                </p>
+                <div class="download-buttons">
+                    <div class="DLbutton" onclick="openInNewTab('https://drive.google.com/file/d/1grA3BEhgt8xyXFzliKebEhIAzPlVsv6s/view?usp=sharing')">Download From Google Drive</div>
+                    <div class="DLbutton" onclick="openInNewTab('https://gofile.io/d/2ZLToR')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Download From GoFile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <button id="showAddonsButton" onclick="toggleAddons()" class="up">
+        <span style="display: flex; align-items: center;">
+            Show Addons
+            <span class="material-symbols-outlined" style="rotate: 180deg;">expand_more</span>
+        </span>
+    </button> 
+    <div class="addons-tabs tabs" id="addonsTabs" style="display: none;">
+        <ul>
+            <li>
+                <label for="addonTab1" style="color: #9590ff;">Addons For Ali V 2.0 & 1.1 </label>
+            </li>
+        </ul>
+
+        <div class="slider">
+            <div class="indicator"></div>
+        </div>
+
+        <div class="content" style="transform: translate(0, -50px);">
+            <section>
+                <h3>For more AliV addons please join his discord server as he upload his addons there thanks.</h3>
+                <p> 
+                    The add-ons present in the Ali-V folder and on the discord server are stable and compatible with other graphics mod.<br>
+                    Be careful when installing some addons as all of them are ingame texture modifications, it is recommended to backup your files before installing one <br>
+                    Furthermore some addons can give online access issues and need to be paired with stand "Fix hashes assets" to work in online.
+                </p>
+                <div class="download-buttons">
+                    <div class="DLbutton" onclick="openInNewTab('https://discord.gg/sWnBwMKgC3')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Join Discord Server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                </div>
+            </section>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+
+    <script>
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+
+        function openInNewTab(url) {
+            window.open(url, '_blank');
+        }
+
+        function toggleAddons() {
+            var addonsTabs = document.getElementById("addonsTabs");
+            var showAddonsButton = document.getElementById("showAddonsButton");
+            var targetElement = document.querySelector('.tabs');
+
+            var start = window.scrollY || document.documentElement.scrollTop;
+            var end = targetElement.offsetTop;
+            var duration = 1300; // Adjust the duration as needed
+
+            var startTime;
+
+            function scrollAnimation(currentTime) {
+                if (!startTime) startTime = currentTime;
+
+                var timeElapsed = currentTime - startTime;
+                var progress = Math.min(timeElapsed / duration, 1);
+                var easeInOutCubic = progress < 0.5 ? 4 * progress ** 3 : (progress - 1) * (2 * progress - 2) * (2 * progress - 2) + 1;
+                var scrollTo = start + (end - start) * easeInOutCubic;
+
+                window.scrollTo(0, scrollTo);
+
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(scrollAnimation);
+                }
+            }
+            
+
+            if (addonsTabs.style.display === 'none' || addonsTabs.style.display === '') {
+                // Show addons
+                addonsTabs.style.display = 'block';
+                showAddonsButton.classList.add('down');
+                requestAnimationFrame(scrollAnimation);
+            } else {
+                // Hide addons
+                start = window.scrollY || document.documentElement.scrollTop;
+                end = start - targetElement.offsetHeight; // Adjust this value as needed
+                startTime = null;
+
+                function hideAnimation(currentTime) {
+                    if (!startTime) startTime = currentTime;
+
+                    var timeElapsed = currentTime - startTime;
+                    var progress = Math.min(timeElapsed / duration, 1);
+                    var easeInOutCubic = progress < 0.5 ? 4 * progress ** 3 : (progress - 1) * (2 * progress - 2) * (2 * progress - 2) + 1;
+                    var scrollTo = start + (end - start) * easeInOutCubic;
+
+                    window.scrollTo(0, scrollTo);
+
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(hideAnimation);
+                    } else { 
+                        setTimeout(function () {
+                            addonsTabs.style.display = 'none';
+                            showAddonsButton.classList.remove('down');
+                        }, 100);
+
+                    }
+                }
+
+                requestAnimationFrame(hideAnimation);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
