@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mod Workshop</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400);
+        @import url(https://fonts.cdnfonts.com/css/helvetica-neue-55);
+        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+        @import url(https://fonts.googleapis.com/css2?family=Heebo&display=swap);
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            font-family: "Montserrat";
+            text-shadow: 0 0 0.5em #ffffff, 0 0 0.1em #ffffff;
+            background-color: #1a1a1a;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .container {
+            border-radius: 15px;
+            background-color: #1a1a1a;
+            box-shadow: rgba(255, 255, 255, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+            padding: 20px;
+            margin: 0 50px; /* 50px space on left and right */
+        }
+
+        .filters {
+            margin-bottom: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .filters label {
+            margin-right: 10px;
+            margin-left: 10px;
+            font-family: "Montserrat";
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        .filters select {
+            padding: 8px;
+            font-family: "Montserrat";
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #ffffff;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .filters input[type="checkbox"] {
+            margin-left: 10px;
+        }
+
+        /* Style for the options in the dropdown */
+        .filters select option {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 15px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        /* Style for specific options 
+        .filters select option:nth-child(1) {
+            background-color: #494949;
+        }
+        .filters select option:nth-child(2) {
+            background-color: #3366cc;
+        }
+
+        .filters select option:nth-child(3) {
+            background-color: #cc8f33; /* Customize the background color for the third option 
+        }
+        */
+        .mods {
+            display: flex;
+            flex-wrap: wrap;
+            border-top: 1px solid #ffffff; /* Added separator line */
+            padding-top: 20px; /* Added padding for spacing */
+        }
+
+        /* Modify the style for mod cards to set the background image */
+        .mod-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 10px;
+            height: 180px;
+            width: 393px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            transition: transform 0.3s, filter 0.3s;
+            backdrop-filter: blur(); /* for some reason this allow the background rule in .mod-card:before to apply so dont touch it */
+        }
+
+        .mod-card:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Modify the style for the mod card text content */
+        .mod-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .mod-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)); /* Adjust the opacity value as needed */
+            z-index: -1;
+            border-radius: 8px; /* To match the border radius of mod-card */
+        }
+
+        /* Modify the style for the mod card text content */
+        .content {
+            text-align: center;
+            text-shadow: #1a1a1a;
+        }
+        
+        .content h2 {
+            font-family: "Montserrat";
+            font-weight: 200;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-size: 1.7rem; /* Adjust font size as needed */
+        }
+
+        .content p {
+            margin: 0; /* Remove default margin */
+            font-size: 20px;
+        }
+
+        /* css for labels */
+        .bottom-labels {
+            opacity: 1;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s, filter 0.3s;
+        }
+        .bottom-labels:hover {
+            transform: scale(1.05);
+        }
+
+        .Road-Mods {
+            margin: 5px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.025rem;
+            font-style: normal;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            background-color: #4f42ff;
+            border-radius: 0.625rem;
+            -webkit-border-radius: 0.625rem;
+            -moz-border-radius: 0.625rem;
+            padding: 0.35rem 0.5rem;
+            border-style: none;
+            border-width: 0.0625rem;
+            border-color: #EF2D56;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        }
+        .Texture-Mods {
+            margin: 5px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.025rem;
+            font-style: normal;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            background-color: #ff8e42;
+            border-radius: 0.625rem;
+            -webkit-border-radius: 0.625rem;
+            -moz-border-radius: 0.625rem;
+            padding: 0.35rem 0.5rem;
+            border-style: none;
+            border-width: 0.0625rem;
+            border-color: #EF2D56;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        }
+        .Fix-Hashes-Assets {
+            margin: 5px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.025rem;
+            font-style: normal;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            background-color: #ff0088;
+            border-radius: 0.625rem;
+            -webkit-border-radius: 0.625rem;
+            -moz-border-radius: 0.625rem;
+            padding: 0.35rem 0.5rem;
+            border-style: none;
+            border-width: 0.0625rem;
+            border-color: #EF2D56;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        }
+        .Tested {
+            margin: 5px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.025rem;
+            font-style: normal;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            background-color: #00cc00;
+            border-radius: 0.625rem;
+            -webkit-border-radius: 0.625rem;
+            -moz-border-radius: 0.625rem;
+            padding: 0.35rem 0.5rem;
+            border-style: none;
+            border-width: 0.0625rem;
+            border-color: #EF2D56;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        }
+        .UnTested {
+            margin: 5px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.025rem;
+            font-style: normal;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            background-color: #ff0000;
+            border-radius: 0.625rem;
+            -webkit-border-radius: 0.625rem;
+            -moz-border-radius: 0.625rem;
+            padding: 0.35rem 0.5rem;
+            border-style: none;
+            border-width: 0.0625rem;
+            border-color: #EF2D56;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        }
+
+        .Overlay-button {
+            text-align: center;
+            margin-top: 15px;
+            margin-left: calc(50% - 53px);
+            color: black;
+            background-color: white;
+            border-radius: 5px;
+            padding: 5px;
+            cursor: pointer;
+            transition: transform 0.3s, filter 0.3s;
+            /*our only intention, is to make you high, high*/
+        }
+
+        .Overlay-button:hover {
+            transform: scale(1.05);
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 2; /* Ensure the overlay is on top of other elements */
+        }
+
+        #overlay-content {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: rgba(255, 255, 255, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+            color: white;
+            width: auto; /* Set the width of the overlay content */
+            text-align: center;
+            position: relative;
+        }
+
+        .img-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: auto;
+            margin: 10px;
+        }
+
+        #closeOverlayBtn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .checkbox-wrapper-1 *,
+        .checkbox-wrapper-1 ::after,
+        .checkbox-wrapper-1 ::before {
+          box-sizing: border-box;
+        }
+        .checkbox-wrapper-1 [type=checkbox].substituted {
+          margin: 0;
+          width: 0;
+          height: 0;
+          display: inline;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+        }
+        .checkbox-wrapper-1 [type=checkbox].substituted + label:before {
+          content: "";
+          display: inline-block;
+          vertical-align: top;
+          height: 1.15em;
+          width: 1.15em;
+          margin-right: 0.6em;
+          color: rgba(0, 0, 0, 0.275);
+          border: solid 0.06em;
+          box-shadow: 0 0 0.04em, 0 0.06em 0.16em -0.03em inset, 0 0 0 0.07em transparent inset;
+          border-radius: 0.2em;
+          background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xml:space="preserve" fill="white" viewBox="0 0 9 9"><rect x="0" y="4.3" transform="matrix(-0.707 -0.7072 0.7072 -0.707 0.5891 10.4702)" width="4.3" height="1.6" /><rect x="2.2" y="2.9" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 12.1877 2.9833)" width="6.1" height="1.7" /></svg>') no-repeat center, white;
+          background-size: 0;
+          will-change: color, border, background, background-size, box-shadow;
+          transform: translate3d(0, 0, 0);
+          transition: color 0.1s, border 0.1s, background 0.15s, box-shadow 0.1s;
+        }
+        .checkbox-wrapper-1 [type=checkbox].substituted:enabled:active + label:before,
+        .checkbox-wrapper-1 [type=checkbox].substituted:enabled + label:active:before {
+          box-shadow: 0 0 0.04em, 0 0.06em 0.16em -0.03em transparent inset, 0 0 0 0.07em rgba(0, 0, 0, 0.1) inset;
+          background-color: #f0f0f0;
+        }
+        .checkbox-wrapper-1 [type=checkbox].substituted:checked + label:before {
+          background-color: #3B99FC;
+          background-size: 0.75em;
+          color: rgba(0, 0, 0, 0.075);
+        }
+        .checkbox-wrapper-1 [type=checkbox].substituted:checked:enabled:active + label:before,
+        .checkbox-wrapper-1 [type=checkbox].substituted:checked:enabled + label:active:before {
+          background-color: #0a7ffb;
+          color: rgba(0, 0, 0, 0.275);
+        }
+        .checkbox-wrapper-1 [type=checkbox].substituted:focus + label:before {
+          box-shadow: 0 0 0.04em, 0 0.06em 0.16em -0.03em transparent inset, 0 0 0 0.07em rgba(0, 0, 0, 0.1) inset, 0 0 0 3.3px rgba(65, 159, 255, 0.55), 0 0 0 5px rgba(65, 159, 255, 0.3);
+        }
+        .checkbox-wrapper-1 [type=checkbox].substituted:focus:active + label:before,
+        .checkbox-wrapper-1 [type=checkbox].substituted:focus + label:active:before {
+          box-shadow: 0 0 0.04em, 0 0.06em 0.16em -0.03em transparent inset, 0 0 0 0.07em rgba(0, 0, 0, 0.1) inset, 0 0 0 3.3px rgba(65, 159, 255, 0.55), 0 0 0 5px rgba(65, 159, 255, 0.3);
+        }
+        .checkbox-wrapper-1 [type=checkbox].substituted:disabled + label:before {
+          opacity: 0.5;
+        }
+      
+        .checkbox-wrapper-1 [type=checkbox].substituted.dark + label:before {
+          color: rgba(255, 255, 255, 0.275);
+          background-color: #222;
+          background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xml:space="preserve" fill="rgba(34, 34, 34, 0.999)" viewBox="0 0 9 9"><rect x="0" y="4.3" transform="matrix(-0.707 -0.7072 0.7072 -0.707 0.5891 10.4702)" width="4.3" height="1.6" /><rect x="2.2" y="2.9" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 12.1877 2.9833)" width="6.1" height="1.7" /></svg>');
+        }
+        .checkbox-wrapper-1 [type=checkbox].substituted.dark:enabled:active + label:before,
+        .checkbox-wrapper-1 [type=checkbox].substituted.dark:enabled + label:active:before {
+          background-color: #444;
+          box-shadow: 0 0 0.04em, 0 0.06em 0.16em -0.03em transparent inset, 0 0 0 0.07em rgba(255, 255, 255, 0.1) inset;
+        }
+        .checkbox-wrapper-1 [type=checkbox].substituted.dark:checked + label:before {
+          background-color: #a97035;
+          color: rgba(255, 255, 255, 0.075);
+        }
+        .checkbox-wrapper-1 [type=checkbox].substituted.dark:checked:enabled:active + label:before,
+        .checkbox-wrapper-1 [type=checkbox].substituted.dark:checked:enabled + label:active:before {
+          background-color: #c68035;
+          color: rgba(0, 0, 0, 0.275);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mod Workshop</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="filters">
+                <label for="Type">Filter by Type:</label>
+                <select id="Type" onchange="filterMods()">
+                    <option value="all">All Types</option>
+                    <option value="road">Road Mods</option>
+                    <option value="texture">Texture Mods</option>
+                    <!-- Add more types as needed -->
+                </select>
+
+                <label for="Status">Filter by Status:</label>
+                <select id="Status" onchange="filterMods()">
+                    <option value="all">All Status</option>
+                    <option value="Tested">Tested</option>
+                    <option value="Untested">Untested</option>
+                    <!-- Add more status options as needed -->
+                </select>
+
+                <div class="checkbox-wrapper-1">
+                    <label for="Featured">Requires "Fix Hashes Assets": </label>
+                    <input id="Featured" class="substituted" type="checkbox" onchange="filterMods()" />
+                    <label for="Featured">&nbsp;</label>
+                </div>
+            </div>
+
+            <div class="mods" id="mods-container">
+                <!-- Mod cards will be dynamically added here -->
+            </div>
+
+            <div id="overlay">
+                <div id="overlay-content">
+                    <span id="closeOverlayBtn"></span>
+                    <!-- Content for the overlay will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Example mods data
+        const modsData = [
+            { name: 'Roads of Europe', desciption:'This mod replaces the entire map roads and sidewalks by the textures of German roads', image: '', Type: 'road', Status: 'Tested', Featured: true },
+            { name: 'Forza Horizon 5 Roads', desciption:'This mod replaces most parts of the map road by the textures of Forza Horizon 5 roads', image: '', Type: 'road', Status: 'Tested', Featured: true },
+            { name: 'European Roads', desciption:'This mod replaces most parts of the map roads by the textures of European Roads &nbsp; (4 different road texture)', image: '', Type: 'road', Status: 'Tested', Featured: true },
+            { name: 'California Roads',  desciption:'This mod replaces the entire map roads and sidewalks by the textures of California Roads (2 versions)', image: '', Type: 'road', Status: 'Untested', Featured: true },
+            { name: 'LA Roads 2.0', desciption:'This mod replaces the entire map roads and sidewalks by the textures of L.A Roads', iembed: '<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/oKKV0A4Zkoc?si=MI-rY7aiORZNcUpl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>' , image: '', Type: 'road', Status: 'Tested', Featured: false },
+            { name: 'Overhaul Road Textures', desciption:'This mod aims to retexture most parts of the map roads', iembed: '<div class="img-container"> <img src="../Misc/images/Overhaul Road Textures/image.png" alt="1"> <img src="../Misc/images/Overhaul Road Textures/image1.png" alt="2"> <img src="../Misc/images/Overhaul Road Textures/image2.png" alt="3"> <img src="../Misc/images/Overhaul Road Textures/image3.png" alt="4"> </div>' ,image: '', Type: 'road', Status: 'Tested', Featured: false },
+            { name: 'Real California Architecture', desciption:'This mod add real life California architecture to los santos', image: '', Type: 'texture', Status: 'Tested', Featured: true },
+            { name: 'Lively World Expansion', desciption:'This mod revamps the look of GTA by adding props/vegetation around the map in various regions', image: '', Type: 'texture', Status: 'Tested', Featured: true },
+            { name: 'GTA V Remake', desciption:'This mod is a semi graphical mod but it mostly revamps the look of GTA by adding props/vegetation around the map in various regions', image: '',Type: 'texture', Status: 'Untested', Featured: true },
+            { name: 'Colored Map Icons', desciption:'This mod changes the icons of the game for some more colorfull ones', image: '', Type: 'texture', Status: 'Tested', Featured: false },
+            { name: 'Remastered Atlas', desciption:'This mod changes the texture of the map and minimap for a better one', image: '', Type: 'texture', Status: 'Tested',Featured: false },
+            { name: 'Glowing Palms', desciption:'This mod transforms palm trees into stunningly beautiful, glowing trees', image: '', Type: 'texture', Status: 'Tested',Featured: false },
+        ];
+
+        function filterMods() {
+            const selectedType = document.getElementById('Type').value;
+            const selectedStatus = document.getElementById('Status').value;
+            const isFeatured = document.getElementById('Featured').checked;
+            const modsContainer = document.getElementById('mods-container');
+
+            // Clear existing mods
+            modsContainer.innerHTML = '';
+
+            // Filter and display mods based on the selected Type, Status, and Featured
+            const filteredMods = modsData.filter(mod => {
+                const typeMatch = selectedType === 'all' || mod.Type === selectedType;
+                const statusMatch = selectedStatus === 'all' || mod.Status === selectedStatus;
+                const featuredMatch = isFeatured ? mod.Featured : true;
+                return typeMatch && statusMatch && featuredMatch;
+            });
+
+            // Display filtered mods
+            filteredMods.forEach(mod => {
+                const modCard = document.createElement('div');
+                modCard.className = 'mod-card';
+
+                // Customize background image based on the mod
+                const backgroundImageStyles = {
+                    'Roads of Europe': 'url("/Graphics/Misc/images/Roads of Europe.webp")', // Example style for 'Roads of Europe'
+                    'Forza Horizon 5 Roads': 'url("/Graphics/Misc/images/Forza Horizon 5 Roads.webp")',
+                    'European Roads': 'url("/Graphics/Misc/images/European Roads.jpg")',
+                    'California Roads': 'url("/Graphics/Misc/images/California Roads.png")',
+                    'LA Roads 2.0': 'url("/Graphics/Misc/images/LA Roads 2.0.png")',
+                    'Overhaul Road Textures': 'url("/Graphics/Misc/images/Overhaul Road Textures.png")',
+                    'Real California Architecture': 'url("/Graphics/Misc/images/Real California Architecture.jpg")',
+                    'Lively World Expansion': 'url("/Graphics/Misc/images/Lively World Expansion.jpg")',
+                    'GTA V Remake': 'url("/Graphics/Misc/images/GTA V Remake.jpg")',
+                    'Colored Map Icons': 'url("/Graphics/Misc/images/Colored Map Icons.webp")',
+                    'Remastered Atlas': 'url("/Graphics/Misc/images/Remastered Atlas.png")',
+                    'Glowing Palms': 'url("/Graphics/Misc/images/Glowing Palms.png")',
+                    // Add more styles for other mods as needed
+                };
+
+                modCard.style.backgroundImage = backgroundImageStyles[mod.name] || 'url("default-image.jpg")'; // Set default image if no specific style is found
+
+                // Create a div for the mod card content (text)
+                const modCardContent = document.createElement('div');
+                modCardContent.className = 'mod-card-content';
+
+                modCard.innerHTML = `
+                    <div class="content">
+                        <h2>${mod.name}</h2>
+                        <p>${mod.desciption}</p>
+                    </div>
+                `;
+
+                // Append the mod card to the mods container
+                modsContainer.appendChild(modCard);
+
+                const showContentButton = document.createElement('button');
+                // Check if the current mod is "LA Roads 2.0" or "Overhaul Road Textures"
+                if (mod.name === 'LA Roads 2.0' || mod.name === 'Overhaul Road Textures') {
+                    // Create a "Show Content" button for these specific mod
+                    showContentButton.className = 'Overlay-button'
+                    showContentButton.textContent = 'Show More Info';
+                    showContentButton.addEventListener('click', (e) => {
+                        showMoreInfo(mod);
+                    });
+
+                    // Append the "Show Content" button to the mod card content
+                    modCard.appendChild(showContentButton);
+                }
+
+                // Create a div for bottom labels
+                const bottomLabels = document.createElement('div');
+                bottomLabels.className = 'bottom-labels';
+
+                // Add labels based on filters
+                if (mod.Type === 'road') {
+                    const roadLabel = document.createElement('label');
+                    roadLabel.className = 'Road-Mods';
+                    roadLabel.textContent = 'Road Mods';
+                    bottomLabels.appendChild(roadLabel);
+                }
+
+                if (mod.Type === 'texture') {
+                    const textureLabel = document.createElement('label');
+                    textureLabel.className = 'Texture-Mods';
+                    textureLabel.textContent = 'Texture Mods';
+                    bottomLabels.appendChild(textureLabel);
+                }
+
+                if (mod.Status === 'Tested') {
+                    const testedLabel = document.createElement('label');
+                    testedLabel.className = 'Tested';
+                    testedLabel.textContent = 'Tested';
+                    bottomLabels.appendChild(testedLabel);
+                }
+
+                if (mod.Status === 'Untested') {
+                    const untestedLabel = document.createElement('label');
+                    untestedLabel.className = 'UnTested';
+                    untestedLabel.textContent = 'Untested';
+                    bottomLabels.appendChild(untestedLabel);
+                }
+
+                if (mod.Featured) {
+                    const fhaLabel = document.createElement('label');
+                    fhaLabel.className = 'Fix-Hashes-Assets';
+                    fhaLabel.textContent = 'FHA Required';
+                    bottomLabels.appendChild(fhaLabel);
+                }
+
+                // Append the bottom labels to the mod card content
+                modCardContent.appendChild(bottomLabels);
+
+                // Append the mod card content to the mod card
+                modCard.appendChild(modCardContent);
+
+                modCard.addEventListener('click', (e) => {
+                    // Specify the link for each mod
+                    const modLink = getModLink(mod.name)
+                    if (e.target !== showContentButton) {
+                        // Open a new tab with the specified link
+                        window.open(modLink, '_blank');
+                    }
+                });
+
+                // Add CSS class for cursor pointer to indicate clickability
+                modCard.style.cursor = 'pointer';
+            });
+
+            // Function to get the link based on mod name (customize as needed)
+            function getModLink(modName) {
+                const modLinks = {
+                    'Roads of Europe': 'https://www.gta5-mods.com/maps/roads-of-europe',
+                    'Forza Horizon 5 Roads': 'https://www.gta5-mods.com/maps/forza-horizon-5-roads-for-gta-5',
+                    'European Roads': 'https://www.gta5-mods.com/misc/german-road-textures',
+                    'California Roads': 'https://www.gta5-mods.com/maps/california-roads-variety-edition-singleplayer',
+                    'LA Roads 2.0': 'https://drive.google.com/file/d/1YysBbJtPzK0fL1TomRHmYyCl6rtB8GYC/view?usp=sharing',
+                    'Overhaul Road Textures': 'https://drive.google.com/file/d/1qGt6T56MLsF68eTV_RDIb6RAzXYLA6Pu/view?usp=sharing',
+                    'Real California Architecture': 'https://www.gta5-mods.com/maps/real-freeway-signs',
+                    'Lively World Expansion': 'https://www.gta5-mods.com/maps/lively-world-expansion-free-2022-release',
+                    'GTA V Remake': 'https://www.gta5-mods.com/misc/gta-v-remake-beta',
+                    'Colored Map Icons': 'https://www.gta5-mods.com/misc/colored-map-icons-for-5real-mod',
+                    'Remastered Atlas': 'https://www.gta5-mods.com/misc/atlas-colored-map-16k-that-also-works-in-radar',
+                    'Glowing Palms': 'https://www.gta5-mods.com/misc/glowing-palms',
+                    // Add more links for other mods as needed
+                };
+
+                return modLinks[modName] || 'https://example.com/defaultlink'; // Set default link if no specific link is found
+            }
+        }
+
+        function showMoreInfo({name: modName, iembed}) {
+            // Create the overlay
+            const overlay = document.getElementById('overlay');
+            const overlayContent = document.getElementById('overlay-content');
+            const closeOverlayBtn = document.getElementById('closeOverlayBtn');
+
+            // Set the content for the overlay (customize as needed)
+            overlayContent.innerHTML = `
+            <span id="closeOverlayBtn"></span>
+                <h2>${modName} Preview</h2>
+                <a href="https://discord.gg/sWnBwMKgC3" target="_blank" style="color: #ffffff">Join The Discord Server</a> <br> <br>
+                ${iembed}
+            `;
+
+            // const mod = modsData.find(mod => mod.name === modName);
+
+            // for (const previewImg of mod.preview) {
+            //     overlayContent.innerHTML += `<img src="${previewImg}" alt="Preview Image">`;
+            // }
+
+            // Display the overlay
+            overlay.style.display = 'flex';
+
+            // Set up close button for the overlay
+            closeOverlayBtn.addEventListener('click', () => {
+                overlay.style.display = 'none';
+            });
+
+            // Close the overlay when clicking away from it
+            overlay.addEventListener('click', (event) => {
+                if (event.target === overlay) {
+                    overlay.style.display = 'none';
+                }
+            });
+        }
+
+        // Initial load to display all mods
+        filterMods();
+    </script>
+</body>
+</html>
