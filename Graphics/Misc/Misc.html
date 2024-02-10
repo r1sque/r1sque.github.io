@@ -15,6 +15,10 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            -ms-overflow-style: none;
+        }
+        ::-webkit-scrollbar {
+            width: 0;  /* Set the width to zero */
         }
 
         header {
@@ -25,7 +29,35 @@
             text-align: center;
         }
 
+        .legend {
+            text-align: center;
+            margin-top: -30px;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 600;
+        }
+        .legend-title {
+            font-family: "Montserrat";
+            text-align: center;
+            font-weight: 800;
+        }
+        .legend nav {
+            display: inline-block;
+            text-align: left; /* Align the text to the left within the legend */
+        }
+        .legend ul {
+            padding: 0;
+            list-style: none;
+        }
+        .legend li {
+            font-size: larger;
+            margin-bottom: -20px; /* Adjust the margin as needed */
+        }
+        .legend label {
+            margin-right: 10px;
+        }
+
         main {
+            padding-top: 0px;
             padding: 20px;
         }
 
@@ -44,7 +76,6 @@
             justify-content: center;
             align-items: center;
         }
-
         .filters label {
             margin-right: 10px;
             margin-left: 10px;
@@ -52,7 +83,6 @@
             font-size: 16px;
             color: #ffffff;
         }
-
         .filters select {
             padding: 8px;
             font-family: "Montserrat";
@@ -62,11 +92,9 @@
             background-color: #1a1a1a;
             color: #ffffff;
         }
-
         .filters input[type="checkbox"] {
             margin-left: 10px;
         }
-
         /* Style for the options in the dropdown */
         .filters select option {
             font-family: 'Source Sans Pro', sans-serif;
@@ -92,7 +120,6 @@
             border-top: 1px solid #ffffff; /* Added separator line */
             padding-top: 20px; /* Added padding for spacing */
         }
-
         /* Modify the style for mod cards to set the background image */
         .mod-card {
             border: 1px solid #ccc;
@@ -107,11 +134,9 @@
             transition: transform 0.3s, filter 0.3s;
             backdrop-filter: blur(); /* for some reason this allow the background rule in .mod-card:before to apply so dont touch it */
         }
-
         .mod-card:hover {
             transform: scale(1.05);
         }
-        
         /* Modify the style for the mod card text content */
         .mod-card-content {
             position: absolute;
@@ -119,7 +144,6 @@
             left: 0;
             right: 0;
         }
-
         .mod-card::before {
             content: "";
             position: absolute;
@@ -137,7 +161,6 @@
             text-align: center;
             text-shadow: #1a1a1a;
         }
-        
         .content h2 {
             font-family: "Montserrat";
             font-weight: 200;
@@ -145,7 +168,6 @@
             margin-bottom: 10px;
             font-size: 1.7rem; /* Adjust font size as needed */
         }
-
         .content p {
             margin: 0; /* Remove default margin */
             font-size: 20px;
@@ -415,6 +437,26 @@
     </header>
 
     <main>
+        <div class="legend">
+            <nav>
+                <ul>
+                    <li class="legend-title">??? What Means What ???</li> <br> <br>
+                    <li class="legend-title">Filter Types:</li> <br> <br> 
+                    <li>•&nbsp;<label class="Road-Mods">Road Mods</label>: are for mods that affect the road textures</li> <br> <br> 
+                    <li>•&nbsp;<label class="Texture-Mods">Texture Mods</label>: are for mods that affect game textures</li> <br> <br> <br>
+                    <li class="legend-title">Filter Status:</li> <br> <br> 
+                    <li>•&nbsp;<label class="Tested">Tested</label>: are for mods that have been tested by me</li> <br> <br> 
+                    <li>•&nbsp;<label class="UnTested">UnTested</label>: are for mods that haven't been tested by me</li> <br> <br> 
+                    <li class="legend-title">Requires "Fix Hashes Assets":</li> <br> <br> 
+                    <div>
+                        <li>•&nbsp;<label class="Fix-Hashes-Assets">Fix-Hashes-Assets</label>: are for mods that requires you to have <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            "Fix Hashes Assets" enabled on STAND <br> <br>
+                    </div>
+                </ul>
+            </nav>
+        </div>
         <div class="container">
             <div class="filters">
                 <label for="Type">Filter by Type:</label>
@@ -434,7 +476,7 @@
                 </select>
 
                 <div class="checkbox-wrapper-1">
-                    <label for="Featured">Requires "Fix Hashes Assets": </label>
+                    <label for="Featured">&nbsp;&nbsp;&nbsp;Requires "Fix Hashes Assets": </label>
                     <input id="Featured" class="substituted" type="checkbox" onchange="filterMods()" />
                     <label for="Featured">&nbsp;</label>
                 </div>
